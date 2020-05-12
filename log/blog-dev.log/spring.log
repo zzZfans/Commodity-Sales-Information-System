@@ -1,0 +1,183 @@
+2020-05-13 00:09:18.182  INFO 20752 --- [Thread-48] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:09:18.190  INFO 20752 --- [Thread-48] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:09:18.192  INFO 20752 --- [Thread-48] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2020-05-13 00:09:18.195  INFO 20752 --- [Thread-48] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2020-05-13 00:09:18.704  INFO 20752 --- [restartedMain] com.zfans.CsisApplication                : Starting CsisApplication on Zfans with PID 20752 (D:\Commodity-Sales-Information-System\target\classes started by Zfans in D:\Commodity-Sales-Information-System)
+2020-05-13 00:09:18.704 DEBUG 20752 --- [restartedMain] com.zfans.CsisApplication                : Running with Spring Boot v2.2.7.RELEASE, Spring v5.2.6.RELEASE
+2020-05-13 00:09:18.704  INFO 20752 --- [restartedMain] com.zfans.CsisApplication                : The following profiles are active: development
+2020-05-13 00:09:18.852  INFO 20752 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-13 00:09:18.860  INFO 20752 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 2 JPA repository interfaces.
+2020-05-13 00:09:19.009  INFO 20752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-05-13 00:09:19.010  INFO 20752 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-13 00:09:19.010  INFO 20752 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-05-13 00:09:19.050  INFO 20752 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-13 00:09:19.050  INFO 20752 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 344 ms
+2020-05-13 00:09:19.085  INFO 20752 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-13 00:09:19.091  INFO 20752 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2020-05-13 00:09:19.110  INFO 20752 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2020-05-13 00:09:19.111  INFO 20752 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2020-05-13 00:09:19.344  INFO 20752 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-13 00:09:19.344  INFO 20752 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:09:19.351  INFO 20752 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-05-13 00:09:19.418  WARN 20752 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-13 00:09:19.442  INFO 20752 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:09:19.495  INFO 20752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-05-13 00:09:19.495  INFO 20752 --- [restartedMain] com.zfans.CsisApplication                : Started CsisApplication in 0.823 seconds (JVM running for 12006.481)
+2020-05-13 00:09:19.496  INFO 20752 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-05-13 00:09:22.928  INFO 24480 --- [main] com.zfans.CsisApplicationTests           : Starting CsisApplicationTests on Zfans with PID 24480 (started by Zfans in D:\Commodity-Sales-Information-System)
+2020-05-13 00:09:22.929 DEBUG 24480 --- [main] com.zfans.CsisApplicationTests           : Running with Spring Boot v2.2.7.RELEASE, Spring v5.2.6.RELEASE
+2020-05-13 00:09:22.930  INFO 24480 --- [main] com.zfans.CsisApplicationTests           : The following profiles are active: development
+2020-05-13 00:09:23.743  INFO 24480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-13 00:09:23.812  INFO 24480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58ms. Found 2 JPA repository interfaces.
+2020-05-13 00:09:24.503  INFO 24480 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-13 00:09:24.571  INFO 24480 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-05-13 00:09:24.689  INFO 24480 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-13 00:09:25.048  INFO 24480 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-13 00:09:25.292  INFO 24480 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-13 00:09:25.333  INFO 24480 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2020-05-13 00:09:26.279  INFO 24480 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-13 00:09:26.286  INFO 24480 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:09:26.896  WARN 24480 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-13 00:09:27.134  INFO 24480 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:09:27.375  WARN 24480 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-05-13 00:09:27.746  INFO 24480 --- [main] com.zfans.CsisApplicationTests           : Started CsisApplicationTests in 6.09 seconds (JVM running for 7.546)
+2020-05-13 00:09:27.975  INFO 24480 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:09:27.976  INFO 24480 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:09:27.978  INFO 24480 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-05-13 00:09:27.983  INFO 24480 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-05-13 00:10:40.698  INFO 572 --- [main] com.zfans.CsisApplicationTests           : Starting CsisApplicationTests on Zfans with PID 572 (started by Zfans in D:\Commodity-Sales-Information-System)
+2020-05-13 00:10:40.700 DEBUG 572 --- [main] com.zfans.CsisApplicationTests           : Running with Spring Boot v2.2.7.RELEASE, Spring v5.2.6.RELEASE
+2020-05-13 00:10:40.700  INFO 572 --- [main] com.zfans.CsisApplicationTests           : The following profiles are active: development
+2020-05-13 00:10:41.476  INFO 572 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-13 00:10:41.564  INFO 572 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74ms. Found 2 JPA repository interfaces.
+2020-05-13 00:10:42.265  INFO 572 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-13 00:10:42.326  INFO 572 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-05-13 00:10:42.473  INFO 572 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-13 00:10:42.893  INFO 572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-13 00:10:43.097  INFO 572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-13 00:10:43.135  INFO 572 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2020-05-13 00:10:44.035  INFO 572 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-13 00:10:44.042  INFO 572 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:10:44.671  WARN 572 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-13 00:10:44.919  INFO 572 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:10:45.252  WARN 572 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-05-13 00:10:45.406  INFO 572 --- [main] com.zfans.CsisApplicationTests           : Started CsisApplicationTests in 5.426 seconds (JVM running for 6.787)
+2020-05-13 00:10:45.680  INFO 572 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:10:45.681  INFO 572 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:10:45.683  INFO 572 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-05-13 00:10:45.687  INFO 572 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-05-13 00:11:59.144  INFO 20752 --- [Thread-53] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:11:59.144  INFO 20752 --- [Thread-53] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:11:59.145  INFO 20752 --- [Thread-53] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2020-05-13 00:11:59.148  INFO 20752 --- [Thread-53] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2020-05-13 00:11:59.517  INFO 20752 --- [restartedMain] com.zfans.CsisApplication                : Starting CsisApplication on Zfans with PID 20752 (D:\Commodity-Sales-Information-System\target\classes started by Zfans in D:\Commodity-Sales-Information-System)
+2020-05-13 00:11:59.517 DEBUG 20752 --- [restartedMain] com.zfans.CsisApplication                : Running with Spring Boot v2.2.7.RELEASE, Spring v5.2.6.RELEASE
+2020-05-13 00:11:59.517  INFO 20752 --- [restartedMain] com.zfans.CsisApplication                : The following profiles are active: development
+2020-05-13 00:11:59.611  INFO 20752 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-13 00:11:59.616  INFO 20752 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 2 JPA repository interfaces.
+2020-05-13 00:11:59.738  INFO 20752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-05-13 00:11:59.738  INFO 20752 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-13 00:11:59.738  INFO 20752 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-05-13 00:11:59.778  INFO 20752 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-13 00:11:59.778  INFO 20752 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 259 ms
+2020-05-13 00:11:59.814  INFO 20752 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-13 00:11:59.817  INFO 20752 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2020-05-13 00:11:59.834  INFO 20752 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2020-05-13 00:11:59.834  INFO 20752 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2020-05-13 00:12:00.112  INFO 20752 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-13 00:12:00.112  INFO 20752 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:12:00.118  INFO 20752 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-05-13 00:12:00.161  WARN 20752 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-13 00:12:00.196  INFO 20752 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:12:00.254  INFO 20752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-05-13 00:12:00.255  INFO 20752 --- [restartedMain] com.zfans.CsisApplication                : Started CsisApplication in 0.756 seconds (JVM running for 12167.24)
+2020-05-13 00:12:00.256  INFO 20752 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-05-13 00:12:01.767  INFO 16344 --- [main] com.zfans.CsisApplicationTests           : Starting CsisApplicationTests on Zfans with PID 16344 (started by Zfans in D:\Commodity-Sales-Information-System)
+2020-05-13 00:12:01.768 DEBUG 16344 --- [main] com.zfans.CsisApplicationTests           : Running with Spring Boot v2.2.7.RELEASE, Spring v5.2.6.RELEASE
+2020-05-13 00:12:01.768  INFO 16344 --- [main] com.zfans.CsisApplicationTests           : The following profiles are active: development
+2020-05-13 00:12:02.304  INFO 16344 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-13 00:12:02.353  INFO 16344 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43ms. Found 2 JPA repository interfaces.
+2020-05-13 00:12:02.948  INFO 16344 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-13 00:12:03.000  INFO 16344 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-05-13 00:12:03.117  INFO 16344 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-13 00:12:03.454  INFO 16344 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-13 00:12:03.638  INFO 16344 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-13 00:12:03.670  INFO 16344 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2020-05-13 00:12:04.364  INFO 16344 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-13 00:12:04.371  INFO 16344 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:12:04.842  WARN 16344 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-13 00:12:05.054  INFO 16344 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:12:05.365  WARN 16344 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-05-13 00:12:05.514  INFO 16344 --- [main] com.zfans.CsisApplicationTests           : Started CsisApplicationTests in 4.268 seconds (JVM running for 5.284)
+2020-05-13 00:12:05.648  INFO 16344 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:12:05.650  INFO 16344 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:12:05.652  INFO 16344 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-05-13 00:12:05.654  INFO 16344 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-05-13 00:12:22.350  INFO 4940 --- [main] com.zfans.CsisApplicationTests           : Starting CsisApplicationTests on Zfans with PID 4940 (started by Zfans in D:\Commodity-Sales-Information-System)
+2020-05-13 00:12:22.352 DEBUG 4940 --- [main] com.zfans.CsisApplicationTests           : Running with Spring Boot v2.2.7.RELEASE, Spring v5.2.6.RELEASE
+2020-05-13 00:12:22.352  INFO 4940 --- [main] com.zfans.CsisApplicationTests           : The following profiles are active: development
+2020-05-13 00:12:22.953  INFO 4940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-13 00:12:23.019  INFO 4940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55ms. Found 2 JPA repository interfaces.
+2020-05-13 00:12:23.639  INFO 4940 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-13 00:12:23.691  INFO 4940 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-05-13 00:12:23.804  INFO 4940 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-13 00:12:24.158  INFO 4940 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-13 00:12:24.354  INFO 4940 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-13 00:12:24.388  INFO 4940 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2020-05-13 00:12:25.266  INFO 4940 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-13 00:12:25.272  INFO 4940 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:12:25.741  WARN 4940 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-13 00:12:25.944  INFO 4940 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:12:26.266  WARN 4940 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-05-13 00:12:26.408  INFO 4940 --- [main] com.zfans.CsisApplicationTests           : Started CsisApplicationTests in 4.598 seconds (JVM running for 5.669)
+2020-05-13 00:12:26.544  INFO 4940 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:12:26.545  INFO 4940 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:12:26.547  INFO 4940 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-05-13 00:12:26.549  INFO 4940 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-05-13 00:13:26.784  INFO 20752 --- [Thread-58] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:13:26.785  INFO 20752 --- [Thread-58] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:13:26.787  INFO 20752 --- [Thread-58] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2020-05-13 00:13:26.793  INFO 20752 --- [Thread-58] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2020-05-13 00:13:27.361  INFO 20752 --- [restartedMain] com.zfans.CsisApplication                : Starting CsisApplication on Zfans with PID 20752 (D:\Commodity-Sales-Information-System\target\classes started by Zfans in D:\Commodity-Sales-Information-System)
+2020-05-13 00:13:27.361 DEBUG 20752 --- [restartedMain] com.zfans.CsisApplication                : Running with Spring Boot v2.2.7.RELEASE, Spring v5.2.6.RELEASE
+2020-05-13 00:13:27.361  INFO 20752 --- [restartedMain] com.zfans.CsisApplication                : The following profiles are active: development
+2020-05-13 00:13:27.526  INFO 20752 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-13 00:13:27.541  INFO 20752 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 JPA repository interfaces.
+2020-05-13 00:13:27.704  INFO 20752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-05-13 00:13:27.705  INFO 20752 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-13 00:13:27.705  INFO 20752 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-05-13 00:13:27.755  INFO 20752 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-13 00:13:27.755  INFO 20752 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 392 ms
+2020-05-13 00:13:27.802  INFO 20752 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-13 00:13:27.809  INFO 20752 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2020-05-13 00:13:27.833  INFO 20752 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2020-05-13 00:13:27.833  INFO 20752 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2020-05-13 00:13:28.404  INFO 20752 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-13 00:13:28.404  INFO 20752 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:13:28.416  INFO 20752 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-05-13 00:13:28.541  WARN 20752 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-13 00:13:28.588  INFO 20752 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:13:28.680  INFO 20752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-05-13 00:13:28.680  INFO 20752 --- [restartedMain] com.zfans.CsisApplication                : Started CsisApplication in 1.346 seconds (JVM running for 12255.667)
+2020-05-13 00:13:28.682  INFO 20752 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-05-13 00:13:30.054  INFO 4908 --- [main] com.zfans.CsisApplicationTests           : Starting CsisApplicationTests on Zfans with PID 4908 (started by Zfans in D:\Commodity-Sales-Information-System)
+2020-05-13 00:13:30.055 DEBUG 4908 --- [main] com.zfans.CsisApplicationTests           : Running with Spring Boot v2.2.7.RELEASE, Spring v5.2.6.RELEASE
+2020-05-13 00:13:30.056  INFO 4908 --- [main] com.zfans.CsisApplicationTests           : The following profiles are active: development
+2020-05-13 00:13:30.859  INFO 4908 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-13 00:13:30.923  INFO 4908 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56ms. Found 2 JPA repository interfaces.
+2020-05-13 00:13:31.727  INFO 4908 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-13 00:13:31.799  INFO 4908 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-05-13 00:13:31.935  INFO 4908 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-13 00:13:32.302  INFO 4908 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-13 00:13:32.535  INFO 4908 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-13 00:13:32.577  INFO 4908 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2020-05-13 00:13:33.541  INFO 4908 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-13 00:13:33.549  INFO 4908 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:13:34.199  WARN 4908 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-13 00:13:34.497  INFO 4908 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:13:34.744  WARN 4908 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-05-13 00:13:34.935  INFO 4908 --- [main] com.zfans.CsisApplicationTests           : Started CsisApplicationTests in 5.672 seconds (JVM running for 7.385)
+2020-05-13 00:13:35.296  INFO 4908 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-13 00:13:35.298  INFO 4908 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-13 00:13:35.300  INFO 4908 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-05-13 00:13:35.305  INFO 4908 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

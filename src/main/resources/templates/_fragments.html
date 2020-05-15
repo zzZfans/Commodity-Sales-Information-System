@@ -19,12 +19,12 @@
 <!--inverted 反转 效果：本来是白色，用了之后变成黑色-->
 <!--attached 附上 效果：贴敷在背板上，消去了圆角-->
 <!--segment 分割-->
-<nav th:fragment="menu(n)" class="ui inverted attached segment my-padded-tb-zero my-shadow-small">
+<nav th:fragment="menu(n)">
     <div class="ui container">
         <!--stackable 可堆叠的 为了响应移动端-->
         <div class="ui inverted secondary stackable menu">
             <!--item 代表 menu 里面的条目-->
-            <h2 class="ui header grey item">商品销售信息系统</h2>
+            <h1 class="ui header grey item" style="color: #333333 !important;">商品销售信息系统</h1>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 0}?'active'"
                th:href="@{/}"><i class="home icon"></i>首页</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 1}?'active'"
@@ -49,12 +49,12 @@
 
 <!--底部footer-->
 <!--attached 垂直 效果：去掉了圆角-->
-<footer th:fragment="footer" class="ui inverted vertical segment my-padded-tb-small">
+<footer th:fragment="footer" class="my-padded-tb-small">
 
     <!--aligned 对齐-->
     <div class="ui center aligned container">
-        <div class="my-text-thin my-text-spaced my-opacity-tiny">
-            <p>Copyright © 2020 By Zfans</p>
+        <div class="my-text-thin my-text-spaced my-opacity-mini">
+            <h4 style="color: #f8f8f8 !important;">Copyright © 2020 By Zfans</h4>
         </div>
     </div>
 

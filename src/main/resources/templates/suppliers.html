@@ -10,15 +10,18 @@
 <!--中间内容-->
 <div class="my-container my-padded-tb-medium">
     <div class="ui container">
-        <div class="ui segment form">
+        <div class="ui my-padded-b-small form">
             <input name="page" type="hidden">
             <div class="ui fluid action input">
+                <label for="inputSearch"></label>
                 <input type="text" name="keyword" id="inputSearch" placeholder="输入关键字...">
-                <button type="button" id="search-btn" class="ui button">搜索</button>
+                <button type="button" id="search-btn" class="ui icon button">
+                    <i class="search icon"></i>
+                </button>
             </div>
         </div>
         <div id="table-container">
-            <table class="ui compact celled teal table" th:fragment="supplierList">
+            <table class="ui compact celled table" th:fragment="supplierList">
                 <thead>
                 <tr>
                     <th>序号</th>
@@ -37,10 +40,14 @@
                     <td th:text="${supplier.contactNumber}"></td>
                     <td th:text="${supplier.supplierProfile}"></td>
                     <td>
-                        <a class="ui mini teal basic button" href="#"
-                           th:href="@{/suppliers/{id}/edit(id=${supplier.id})}">编辑</a>
-                        <a class="ui mini red basic button" href="#"
-                           th:href="@{/suppliers/{id}/delete(id=${supplier.id})}">删除</a>
+                        <a class="ui mini icon button" href="#"
+                           th:href="@{/suppliers/{id}/edit(id=${supplier.id})}">
+                            <i class="edit icon"></i>
+                        </a>
+                        <a class="ui mini red icon button" href="#"
+                           th:href="@{/suppliers/{id}/delete(id=${supplier.id})}">
+                            <i class="trash alternate icon"></i>
+                        </a>
                     </td>
                 </tr>
                 </tbody>
@@ -49,18 +56,18 @@
                     <!--colspan 合并单元格-->
                     <th colspan="6">
                         <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
-                            <a onclick="page(this)" class="item" th:attr="data-page=${page.number}-1"
+                            <a onclick="page(this)" class="item icon" th:attr="data-page=${page.number}-1"
                                th:unless="${page.first}">
-                                上一页
+                                <i class="chevron left icon"></i>
                             </a>
-                            <a onclick="page(this)" class="item" th:attr="data-page=${page.number}+1"
+                            <a onclick="page(this)" class="item icon" th:attr="data-page=${page.number}+1"
                                th:unless="${page.last}">
-                                下一页
+                                <i class="chevron right icon"></i>
                             </a>
                         </div>
-                        <a class="ui my-margin-top-tiny right floated mini teal basic button"
+                        <a class="ui right floated my-margin-zero_three mini icon button"
                            href="#" th:href="@{/suppliers/input}">
-                            新增
+                            <i class="plus icon"></i>
                         </a>
                     </th>
                 </tr>

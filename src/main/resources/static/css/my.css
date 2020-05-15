@@ -1,5 +1,5 @@
 body {
-    background: url("https://apenixx-oss.oss-cn-shenzhen.aliyuncs.com/public/BlogInfo/bg.png");
+    background: url("https://t1.picb.cc/uploads/2020/05/15/kYGdTd.jpg");
 
     display: flex; /* 设置flex */
     flex-direction: column; /* 方向为垂直方向 */
@@ -17,7 +17,15 @@ body {
     padding: 0 !important;
 }
 
-.my-padded {
+.my-padded-zero_three {
+    padding: 0.3em !important;
+}
+
+.my-padded-one {
+    padding: 1em !important;
+}
+
+.my-padded-two {
     padding: 2em !important;
 }
 
@@ -91,6 +99,10 @@ body {
     padding-right: 2em !important;
 }
 
+.my-padded-b-small {
+    padding-bottom: 2em !important;
+}
+
 /*----- text -----*/
 
 .my-text-thin {
@@ -121,6 +133,10 @@ body {
 }
 
 /*------- margin -------*/
+.my-margin-zero_three {
+    margin: 0.2em !important;
+}
+
 .my-margin-tb-tiny {
     margin-top: 0.3em !important;
     margin-bottom: 0.3em !important;

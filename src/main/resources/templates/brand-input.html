@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/_fragments :: head(~{::title})">
+    <title>品牌新增</title>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="/_fragments :: menu(2)"></nav>
+
+<!--中间内容-->
+<div class="my-container my-padded-tb-medium">
+    <div class="ui container my-padded-lr-big">
+        <form action="#" class="ui form" method="post" th:action="@{/brands}" th:object="${brand}">
+            <input name="id" th:value="*{id}" type="hidden">
+            <div class="field">
+                <label>品牌名称</label>
+                <input name="name" placeholder="品牌名称..." th:value="*{name}" type="text">
+            </div>
+            <div class="field">
+                <label>品牌网址</label>
+                <input name="website" placeholder="品牌网址..." th:value="*{website}" type="text">
+            </div>
+            <div class="field">
+                <label>品牌logo</label>
+                <input name="logo" placeholder="品牌logo..." th:value="*{logo}" type="text">
+            </div>
+            <!--/*/
+            <div class="ui negative message" th:if="${#fields.hasErrors('name')}">
+                <i class="close icon" id="errorMessageCloseIcon"></i>
+                <div class="header">验证失败</div>
+                <p th:errors="*{name}">提交信息不符合规则</p>
+            </div>
+            /*/-->
+            <div class="ui right aligned container">
+                <button class="ui button" onclick="window.history.go(-1)" type="button">返回</button>
+                <button class="ui teal button">提交</button>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+
+<!--底部footer-->
+<footer th:replace="/_fragments :: footer"></footer>
+
+<th:block th:replace="/_fragments :: script"></th:block>
+
+
+<script>
+    $("#errorMessageCloseIcon").click(function () {
+        $('.ui.negative.message').hide()
+    })
+
+    $('.menu.toggle').click(function () {
+        $('.my-item').toggleClass('my-mobile-hide');
+    });
+
+    $('.ui.form').form({
+        fields: {
+            name: {
+                identifier: 'name',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入品牌名称！'
+                }]
+            },
+            website: {
+                identifier: 'website',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品网址！'
+                }]
+            },
+            logo: {
+                identifier: 'logo',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入品牌logo！'
+                }]
+            }
+        }
+    });
+</script>
+</body>
+</html>

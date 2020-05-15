@@ -1,0 +1,214 @@
+body {
+    background: url("https://apenixx-oss.oss-cn-shenzhen.aliyuncs.com/public/BlogInfo/bg.png");
+
+    display: flex; /* 设置flex */
+    flex-direction: column; /* 方向为垂直方向 */
+}
+
+.fill-rest {
+    flex: 1; /* 内容占满所有剩余空间 */
+}
+
+.my-padded-zero {
+    padding: 0 !important;
+}
+
+.my-padded {
+    padding: 2em !important;
+}
+
+.my-padded-tb-zero {
+    padding-top: 0 !important; /*一个em 14个像素*/
+    padding-bottom: 0 !important; /* !important 提高优先级 */
+}
+
+.my-padded-tb-zero_two {
+    padding-top: 0.2em !important; /*一个em 14个像素*/
+    padding-bottom: 0.2em !important; /* !important 提高优先级 */
+}
+
+.my-padded-tb-soTiny {
+    padding-top: 0.3em !important; /*一个em 14个像素*/
+    padding-bottom: 0.3em !important; /* !important 提高优先级 */
+}
+
+.my-padded-tb-zero_seven {
+    padding-top: 0.7em !important; /*一个em 14个像素*/
+    padding-bottom: 0.7em !important; /* !important 提高优先级 */
+}
+
+.my-padded-tb-tiny {
+    padding-top: 1em !important; /*一个em 14个像素*/
+    padding-bottom: 1em !important; /* !important 提高优先级 */
+}
+
+.my-padded-tb-small {
+    padding-top: 2em !important; /*一个em 14个像素*/
+    padding-bottom: 2em !important; /* !important 提高优先级 */
+}
+
+.my-padded-tb-normal {
+    padding-top: 3em !important; /*一个em 14个像素*/
+    padding-bottom: 3em !important; /* !important 提高优先级 */
+}
+
+.my-padded-tb-medium {
+    padding-top: 4em !important; /*一个em 14个像素*/
+    padding-bottom: 4em !important; /* !important 提高优先级 */
+}
+
+.my-padded-tb-large {
+    padding-top: 5em !important; /*一个em 14个像素*/
+    padding-bottom: 5em !important; /* !important 提高优先级 */
+}
+
+.my-padded-tb-huge {
+    padding-top: 6em !important; /*一个em 14个像素*/
+    padding-bottom: 6em !important; /* !important 提高优先级 */
+}
+
+.my-padded-lr-big {
+    padding-left: 16em !important;
+    padding-right: 16em !important;
+}
+
+.my-padded-lr-responsive {
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
+
+.my-padded-lr-tiny {
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+}
+
+.my-padded-lr-small {
+    padding-left: 2em !important;
+    padding-right: 2em !important;
+}
+
+/*----- text -----*/
+
+.my-text-thin {
+    font-weight: lighter !important;
+}
+
+.my-text-spaced {
+    letter-spacing: 1px !important;
+}
+
+.my-text-lined {
+    line-height: 1.8;
+}
+
+
+/*-------opacity---------*/
+.my-opacity-mini {
+    opacity: 0.8 !important;
+}
+
+.my-opacity-tiny {
+    opacity: 0.6 !important;
+}
+
+/*----- display -----*/
+.my-inline-block {
+    display: inline-block !important;
+}
+
+/*------- margin -------*/
+.my-margin-tb-tiny {
+    margin-top: 0.3em !important;
+    margin-bottom: 0.3em !important;
+}
+
+.my-margin-tb-small {
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+}
+
+.my-margin-top-tiny {
+    margin-top: 0.4em !important;
+}
+
+.my-margin-top-small {
+    margin-top: 1em !important;
+}
+
+.my-margin-top-large {
+    margin-top: 2em !important;
+}
+
+.my-margin-bottom-small {
+    margin-bottom: 0.5em !important;
+}
+
+/*-----------color-----------*/
+.my-black {
+    color: #333 !important;
+}
+
+/*--------position---------*/
+.my-right-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.my-mobile-show {
+    display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+    .my-mobile-hide {
+        display: none !important;
+    }
+
+    .my-mobile-show {
+        display: block !important;
+    }
+
+    .my-padded-lr-responsive {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .my-mobile-wide {
+        width: 100% !important;
+    }
+
+    .my-mobile-lr-clear {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .my-mobile-tb-clear {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+}
+
+.my-fixed {
+    /*绝对布局*/
+    position: fixed !important;
+    /*优先显示级别*/
+    z-index: 10 !important;
+}
+
+.my-right-bottom {
+    bottom: 0 !important;
+    right: 0 !important;
+}
+
+/*------------container--------------*/
+.my-container {
+    margin: auto !important;
+}
+
+/*-----------shadow-----------*/
+.my-shadow-small {
+    /*兼容谷歌等*/
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}

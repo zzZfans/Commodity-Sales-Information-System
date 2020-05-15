@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/_fragments :: head(~{::title})">
+    <title>供应商</title>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="/_fragments :: menu(5)"></nav>
+
+<!--中间内容-->
+<div class="my-container my-padded-tb-medium">
+    <div class="ui container">
+        <div class="ui segment form">
+            <input name="page" type="hidden">
+            <div class="ui fluid action input">
+                <input type="text" name="name" id="inputSearch" placeholder="输入供应商名...">
+                <button type="button" id="search-btn" class="ui button">搜索</button>
+            </div>
+        </div>
+        <div id="table-container">
+            <table class="ui compact celled teal table" th:fragment="supplierList">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>供应商</th>
+                    <th>联系人</th>
+                    <th>联系人电话</th>
+                    <th>供应商简介</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="supplier,iterStat:${page.content}">
+                    <td th:text="${iterStat.count}"></td>
+                    <td th:text="${supplier.name}"></td>
+                    <td th:text="${supplier.contact}"></td>
+                    <td th:text="${supplier.contactNumber}"></td>
+                    <td th:text="${supplier.supplierProfile}"></td>
+                    <td>
+                        <a class="ui mini teal basic button" href="#"
+                           th:href="@{/suppliers/{id}/edit(id=${supplier.id})}">编辑</a>
+                        <a class="ui mini red basic button" href="#"
+                           th:href="@{/suppliers/{id}/delete(id=${supplier.id})}">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <!--colspan 合并单元格-->
+                    <th colspan="6">
+                        <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
+                            <a onclick="page(this)" class="item" th:attr="data-page=${page.number}-1"
+                               th:unless="${page.first}">
+                                上一页
+                            </a>
+                            <a onclick="page(this)" class="item" th:attr="data-page=${page.number}+1"
+                               th:unless="${page.last}">
+                                下一页
+                            </a>
+                        </div>
+                        <a class="ui my-margin-top-tiny right floated mini teal basic button"
+                           href="#" th:href="@{/suppliers/input}">
+                            新增
+                        </a>
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="ui success message my-padded-tb-zero" th:unless="${#strings.isEmpty(message)}">
+            <div class="ui two column grid">
+                <div class="column">
+                    <h4 th:text="${message}"></h4>
+                </div>
+                <div class="right aligned column">
+                    <i class="close icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--底部footer-->
+<footer th:replace="/_fragments :: footer"></footer>
+
+<th:block th:replace="/_fragments :: script"></th:block>
+
+<script>
+    $('.message .close').on('click', function () {
+        $(this).closest('.message').transition('fade');
+    });
+
+    setTimeout(function () {
+        $('.message .close').click();
+    }, 3000);
+
+    function page(obj) {
+        $("[name='page']").val($(obj).data("page"));
+        loaddata();
+    }
+
+    $("#search-btn").click(function () {
+        loaddata();
+    })
+
+    $('#inputSearch').bind('keyup', function (event) {
+        if (event.key === "Enter") {
+            $("#search-btn").click()
+        }
+    })
+
+    function loaddata() {
+        $("#table-container").load(/*[[@{/suppliers/search}]]*/"/suppliers/search", {
+            name: $("[name='name']").val(),
+            page: $("[name='page']").val()
+        });
+    }
+
+</script>
+
+</body>
+</html>

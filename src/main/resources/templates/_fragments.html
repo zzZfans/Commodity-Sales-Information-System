@@ -25,24 +25,20 @@
         <div class="ui inverted secondary stackable menu">
             <!--item 代表 menu 里面的条目-->
             <h2 class="ui header grey item">商品销售信息系统</h2>
+            <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 0}?'active'"
+               th:href="@{/}"><i class="home icon"></i>首页</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 1}?'active'"
-               th:href="@{/admin/blogs}"><i
-                    class="home icon"></i>商品</a>
+               th:href="@{/}"><i class="home icon"></i>商品</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 2}?'active'"
-               th:href="@{/brands}"><i
-                    class="bars icon"></i>品牌</a>
+               th:href="@{/brands}"><i class="bars icon"></i>品牌</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 3}?'active'"
-               th:href="@{/admin/tags}"><i
-                    class="tags icon"></i>分类</a>
+               th:href="@{/}"><i class="tags icon"></i>分类</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 4}?'active'"
-               th:href="@{/admin/tags}"><i
-                    class="tags icon"></i>规格</a>
+               th:href="@{/customers}"><i class="tags icon"></i>客户</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 5}?'active'"
-               th:href="@{/suppliers}"><i
-                    class="tags icon"></i>供应商</a>
+               th:href="@{/suppliers}"><i class="tags icon"></i>供应商</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 6}?'active'"
-               th:href="@{/admin/tags}"><i
-                    class="tags icon"></i>分类</a>
+               th:href="@{/}"><i class="tags icon"></i>分类</a>
         </div>
     </div>
     <!--menu 有居中的效果-->

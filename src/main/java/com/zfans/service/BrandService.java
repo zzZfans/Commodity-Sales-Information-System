@@ -41,27 +41,22 @@ public class BrandService {
         return brandRepository.getOne(id);
     }
 
-
     public List<Brand> listBrand() {
         return brandRepository.findAll();
     }
 
-
     public Page<Brand> listBrand(Pageable pageable, Brand brand) {
-        return brandRepository.findAll(new Specification<Brand>() {
-            @Override
-            public Predicate toPredicate(Root<Brand> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                List<Predicate> predicates = new ArrayList<>();
-                if (!"".equals(brand.getName()) && brand.getName() != null) {
-                    predicates.add(criteriaBuilder.like(root.get("name"), "%" + brand.getName() + "%"));
-                }
-                criteriaQuery.where(predicates.toArray(new Predicate[0]));
-                return null;
+        return brandRepository.findAll((Specification<Brand>) (root, criteriaQuery, criteriaBuilder) -> {
+            if (!"".equals(brand.getName()) && brand.getName() != null) {
+                criteriaQuery.where(criteriaBuilder.or(criteriaBuilder.like(root.get("name"), "%" + brand.getName() + "%"),
+                        criteriaBuilder.like(root.get("website"), "%" + brand.getName() + "%"),
+                        criteriaBuilder.like(root.get("logo"), "%" + brand.getName() + "%")));
             }
+            return null;
         }, pageable);
     }
 
-    @Transactional
+    @Transactional(rollbackOn = Exception.class)
     public Brand saveBrand(Brand brand) {
         return brandRepository.save(brand);
     }

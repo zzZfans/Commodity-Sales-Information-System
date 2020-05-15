@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/_fragments :: head(~{::title})">
-    <title>品牌</title>
+    <title>客户</title>
 </head>
 <body>
 <!--导航-->
-<nav th:replace="/_fragments :: menu(2)"></nav>
+<nav th:replace="/_fragments :: menu(4)"></nav>
 
 <!--中间内容-->
 <div class="my-container my-padded-tb-medium">
@@ -18,27 +18,29 @@
             </div>
         </div>
         <div id="table-container">
-            <table class="ui compact celled teal table" th:fragment="brandList">
+            <table class="ui compact celled teal table" th:fragment="customerList">
                 <thead>
                 <tr>
                     <th>序号</th>
-                    <th>品牌</th>
-                    <th>网址</th>
-                    <th>LOGO</th>
+                    <th>客户号</th>
+                    <th>客户</th>
+                    <th>电话号码</th>
+                    <th>地址</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="brand,iterStat:${page.content}">
+                <tr th:each="customer,iterStat:${page.content}">
                     <td th:text="${iterStat.count}"></td>
-                    <td th:text="${brand.name}"></td>
-                    <td th:text="${brand.website}"></td>
-                    <td th:text="${brand.logo}"></td>
+                    <td th:text="${customer.customerNumber}"></td>
+                    <td th:text="${customer.name}"></td>
+                    <td th:text="${customer.phoneNumber}"></td>
+                    <td th:text="${customer.address}"></td>
                     <td>
                         <a class="ui mini teal basic button" href="#"
-                           th:href="@{/brands/{id}/edit(id=${brand.id})}">编辑</a>
+                           th:href="@{/customers/{id}/edit(id=${customer.id})}">编辑</a>
                         <a class="ui mini red basic button" href="#"
-                           th:href="@{/brands/{id}/delete(id=${brand.id})}">删除</a>
+                           th:href="@{/customers/{id}/delete(id=${customer.id})}">删除</a>
                     </td>
                 </tr>
                 </tbody>
@@ -57,7 +59,7 @@
                             </a>
                         </div>
                         <a class="ui my-margin-top-tiny right floated mini teal basic button"
-                           href="#" th:href="@{/brands/input}">
+                           href="#" th:href="@{/customers/input}">
                             新增
                         </a>
                     </th>
@@ -108,7 +110,7 @@
     })
 
     function loaddata() {
-        $("#table-container").load(/*[[@{/brands/search}]]*/"/brands/search", {
+        $("#table-container").load(/*[[@{/customers/search}]]*/"/customers/search", {
             name: $("[name='keyword']").val(),
             page: $("[name='page']").val()
         });

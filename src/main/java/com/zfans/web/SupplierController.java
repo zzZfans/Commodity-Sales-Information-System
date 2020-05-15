@@ -65,9 +65,17 @@ public class SupplierController {
         }
         Supplier s = supplierService.saveSupplier(supplier);
         if (s == null) {
-            attributes.addFlashAttribute("message", "修改失败！");
+            if (t1.getId() != null) {
+                attributes.addFlashAttribute("message", "修改失败！");
+            } else {
+                attributes.addFlashAttribute("message", "添加失败！");
+            }
         } else {
-            attributes.addFlashAttribute("message", "修改成功！");
+            if (t1.getId() != null) {
+                attributes.addFlashAttribute("message", "修改成功！");
+            } else {
+                attributes.addFlashAttribute("message", "添加成功！");
+            }
         }
         return "redirect:/suppliers";
     }

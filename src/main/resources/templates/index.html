@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/_fragments :: head(~{::title})">
-    <title>商品销售系统</title>
+    <title>商品销售信息系统</title>
 </head>
 <body>
 <!--导航-->
 <nav th:replace="/_fragments :: menu(0)"></nav>
 
-<div class="fill-rest">欢迎登录！</div>
+<!--中间内容-->
+<div class="my-container my-padded-tb-medium">
+    <div class="ui container">
+        <div class="ui transparent-background message">
+            <h3>Hi,</h3>
+            <h3>欢迎来到商品销售信息系统！</h3>
+        </div>
+        <img src="https://t1.picb.cc/uploads/2020/05/15/kYGdTd.jpg" alt=""
+             class="ui rounded bordered fluid image">
+    </div>
+</div>
 
 <!--底部footer-->
 <footer th:replace="/_fragments :: footer"></footer>

@@ -70,9 +70,17 @@ public class BrandController {
         }
         Brand b = brandService.saveBrand(brand);
         if (b == null) {
-            attributes.addFlashAttribute("message", "修改失败！");
+            if (t1.getId() != null) {
+                attributes.addFlashAttribute("message", "修改失败！");
+            } else {
+                attributes.addFlashAttribute("message", "添加失败！");
+            }
         } else {
-            attributes.addFlashAttribute("message", "修改成功！");
+            if (t1.getId() != null) {
+                attributes.addFlashAttribute("message", "修改成功！");
+            } else {
+                attributes.addFlashAttribute("message", "添加成功！");
+            }
         }
         return "redirect:/brands";
     }

@@ -13,7 +13,7 @@
         <div class="ui segment form">
             <input name="page" type="hidden">
             <div class="ui fluid action input">
-                <input type="text" name="name" id="inputSearch" placeholder="输入供应商名...">
+                <input type="text" name="keyword" id="inputSearch" placeholder="输入关键字...">
                 <button type="button" id="search-btn" class="ui button">搜索</button>
             </div>
         </div>
@@ -111,7 +111,7 @@
 
     function loaddata() {
         $("#table-container").load(/*[[@{/suppliers/search}]]*/"/suppliers/search", {
-            name: $("[name='name']").val(),
+            name: $("[name='keyword']").val(),
             page: $("[name='page']").val()
         });
     }

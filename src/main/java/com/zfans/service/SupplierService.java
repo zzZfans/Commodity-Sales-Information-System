@@ -43,16 +43,14 @@ public class SupplierService {
     }
 
     public Page<Supplier> listSupplier(Pageable pageable, Supplier supplier) {
-        return supplierRepository.findAll(new Specification<Supplier>() {
-            @Override
-            public Predicate toPredicate(Root<Supplier> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                List<Predicate> predicates = new ArrayList<>();
-                if (!"".equals(supplier.getName()) && supplier.getName() != null) {
-                    predicates.add(criteriaBuilder.like(root.get("name"), "%" + supplier.getName() + "%"));
-                }
-                criteriaQuery.where(predicates.toArray(new Predicate[0]));
-                return null;
+        return supplierRepository.findAll((Specification<Supplier>) (root, criteriaQuery, criteriaBuilder) -> {
+            if (!"".equals(supplier.getName()) && supplier.getName() != null) {
+                criteriaQuery.where(criteriaBuilder.or(criteriaBuilder.like(root.get("name"), "%" + supplier.getName() + "%"),
+                        criteriaBuilder.like(root.get("contact"), "%" + supplier.getName() + "%"),
+                        criteriaBuilder.like(root.get("contactNumber"), "%" + supplier.getName() + "%"),
+                        criteriaBuilder.like(root.get("supplierProfile"), "%" + supplier.getName() + "%")));
             }
+            return null;
         }, pageable);
     }
 
@@ -60,7 +58,7 @@ public class SupplierService {
         return supplierRepository.findAll(pageable);
     }
 
-    @Transactional
+    @Transactional(rollbackOn = Exception.class)
     public Supplier saveSupplier(Supplier supplier) {
         return supplierRepository.save(supplier);
     }

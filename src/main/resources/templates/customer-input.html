@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/_fragments :: head(~{::title})">
+    <title>客户新增</title>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="/_fragments :: menu(4)"></nav>
+
+<!--中间内容-->
+<div class="my-container my-padded-tb-medium">
+    <div class="ui container my-padded-lr-big">
+        <form action="#" class="ui form" method="post" th:action="@{/customers}" th:object="${customer}">
+            <input name="id" th:value="*{id}" type="hidden">
+            <div class="field">
+                <label>客户号</label>
+                <input name="customerNumber" placeholder="客户号..." th:value="*{customerNumber}" type="text">
+            </div>
+            <div class="field">
+                <label>客户名</label>
+                <input name="name" placeholder="客户名..." th:value="*{name}" type="text">
+            </div>
+            <div class="field">
+                <label>客户电话号码</label>
+                <input name="phoneNumber" placeholder="客户电话号码..." th:value="*{phoneNumber}" type="text">
+            </div>
+            <div class="field">
+                <label>客户地址</label>
+                <input name="address" placeholder="客户地址..." th:value="*{address}" type="text">
+            </div>
+            <!--/*/
+            <div class="ui negative message" th:if="${#fields.hasErrors('name')}">
+                <i class="close icon" id="errorMessageCloseIcon"></i>
+                <div class="header">验证失败</div>
+                <p th:errors="*{name}">提交信息不符合规则</p>
+            </div>
+            /*/-->
+            <div class="ui right aligned container">
+                <button class="ui button" onclick="window.history.go(-1)" type="button">返回</button>
+                <button class="ui teal button">提交</button>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+
+<!--底部footer-->
+<footer th:replace="/_fragments :: footer"></footer>
+
+<th:block th:replace="/_fragments :: script"></th:block>
+
+
+<script>
+    $("#errorMessageCloseIcon").click(function () {
+        $('.ui.negative.message').hide()
+    })
+
+    $('.menu.toggle').click(function () {
+        $('.my-item').toggleClass('my-mobile-hide');
+    });
+
+    $('.ui.form').form({
+        fields: {
+            customerNumber: {
+                identifier: 'customerNumber',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入客户号！'
+                }]
+            },
+            name: {
+                identifier: 'name',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入客户名！'
+                }]
+            },
+            phoneNumber: {
+                identifier: 'phoneNumber',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入客户电话号码！'
+                }]
+            },
+            address: {
+                identifier: 'address',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入客户地址！'
+                }]
+            }
+        }
+    });
+</script>
+</body>
+</html>

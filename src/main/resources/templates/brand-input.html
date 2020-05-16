@@ -8,20 +8,20 @@
 <nav th:replace="/_fragments :: menu(2)"></nav>
 
 <!--中间内容-->
-<div class="my-container my-padded-tb-medium">
+<div class="my-container my-padded-tb-medium animated fadeIn">
     <div class="ui container my-padded-lr-big">
         <form action="#" class="ui form" method="post" th:action="@{/brands}" th:object="${brand}">
             <input name="id" th:value="*{id}" type="hidden">
             <div class="field">
-                <label>品牌名称</label>
+                <label style="color: #f1f1f1">品牌名称</label>
                 <input name="name" placeholder="品牌名称..." th:value="*{name}" type="text">
             </div>
             <div class="field">
-                <label>品牌网址</label>
+                <label style="color: #f1f1f1">品牌网址</label>
                 <input name="website" placeholder="品牌网址..." th:value="*{website}" type="text">
             </div>
             <div class="field">
-                <label>品牌logo</label>
+                <label style="color: #f1f1f1">品牌logo</label>
                 <input name="logo" placeholder="品牌logo..." th:value="*{logo}" type="text">
             </div>
             <!--/*/

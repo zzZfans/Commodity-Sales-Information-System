@@ -10,6 +10,8 @@
 
     <!--Semantic UI css资源-->
     <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <!--animate.css 动画-->
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
     <!--自定义css文件-->
     <link rel="stylesheet" th:href="@{/css/my.css}">
 </head>
@@ -32,7 +34,7 @@
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 2}?'active'"
                th:href="@{/brands}"><i class="bars icon"></i>品牌</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 3}?'active'"
-               th:href="@{/}"><i class="tags icon"></i>分类</a>
+               th:href="@{/classifications}"><i class="tags icon"></i>分类</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 4}?'active'"
                th:href="@{/customers}"><i class="tags icon"></i>客户</a>
             <a class="item my-item my-mobile-hide" href="#" th:classappend="${n == 5}?'active'"
@@ -42,7 +44,7 @@
         </div>
     </div>
     <!--menu 有居中的效果-->
-    <a class="ui menu toggle black icon button my-right-top my-mobile-show" href="#">
+    <a class="ui menu toggle transparent-background icon button my-right-top my-mobile-show" href="#">
         <i class="sidebar icon"></i>
     </a>
 </nav>

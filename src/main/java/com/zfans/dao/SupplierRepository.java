@@ -11,5 +11,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  */
 public interface SupplierRepository extends JpaRepository<Supplier, Long>, JpaSpecificationExecutor<Supplier> {
     Supplier findByName(String name);
+
     Supplier findBySupplierProfile(String name);
 }

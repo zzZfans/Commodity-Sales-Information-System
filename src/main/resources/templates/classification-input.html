@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/_fragments :: head(~{::title})">
-    <title>客户新增</title>
+    <title>新增分类</title>
 </head>
 <body>
 <!--导航-->
-<nav th:replace="/_fragments :: menu(4)"></nav>
+<nav th:replace="/_fragments :: menu(3)"></nav>
 
 <!--中间内容-->
 <div class="my-container my-padded-tb-medium animated fadeIn">
     <div class="ui container my-padded-lr-big">
-        <form action="#" class="ui form" method="post" th:action="@{/customers}" th:object="${customer}">
+        <form action="#" class="ui form" method="post" th:action="@{/classifications}" th:object="${classification}">
             <input name="id" th:value="*{id}" type="hidden">
             <div class="field">
-                <label style="color: #f1f1f1">客户号</label>
-                <input name="customerNumber" placeholder="客户号..." th:value="*{customerNumber}" type="text">
+                <label style="color: #f1f1f1">分类名称</label>
+                <input name="name" placeholder="分类名称..." th:value="*{name}" type="text">
             </div>
             <div class="field">
-                <label style="color: #f1f1f1">客户名</label>
-                <input name="name" placeholder="客户名..." th:value="*{name}" type="text">
+                <label style="color: #f1f1f1">分类图片</label>
+                <input name="picture" placeholder="分类图片..." th:value="*{picture}" type="text">
             </div>
             <div class="field">
-                <label style="color: #f1f1f1">客户电话号码</label>
-                <input name="phoneNumber" placeholder="客户电话号码..." th:value="*{phoneNumber}" type="text">
-            </div>
-            <div class="field">
-                <label style="color: #f1f1f1">客户地址</label>
-                <input name="address" placeholder="客户地址..." th:value="*{address}" type="text">
+                <label style="color: #f1f1f1">选择父类（若无父类则不选择，或输入不存在的分类）</label>
+                <div class="ui fluid search selection dropdown">
+                    <input name="superClassification.id"
+                           th:value="*{superClassification}==null?'-1':*{superClassification.id}" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">选择父类...</div>
+                    <div class="menu">
+                        <div class="item" th:data-value="${superClassification.id}"
+                             th:each="superClassification : ${superClassifications}"
+                             th:text="${superClassification.name}"></div>
+                    </div>
+                </div>
             </div>
             <!--/*/
             <div class="ui negative message" th:if="${#fields.hasErrors('name')}">
@@ -37,7 +43,7 @@
             /*/-->
             <div class="ui right aligned container">
                 <button class="ui button" onclick="window.history.go(-1)" type="button">返回</button>
-                <button class="ui teal button">提交</button>
+                <button id="submit-btn" class="ui teal button">提交</button>
             </div>
             <div class="ui error message"></div>
         </form>
@@ -61,32 +67,18 @@
 
     $('.ui.form').form({
         fields: {
-            customerNumber: {
-                identifier: 'customerNumber',
-                rules: [{
-                    type: 'empty',
-                    prompt: '请输入客户号！'
-                }]
-            },
             name: {
                 identifier: 'name',
                 rules: [{
                     type: 'empty',
-                    prompt: '请输入客户名！'
+                    prompt: '请输入分类名称！'
                 }]
             },
-            phoneNumber: {
-                identifier: 'phoneNumber',
+            picture: {
+                identifier: 'picture',
                 rules: [{
                     type: 'empty',
-                    prompt: '请输入客户电话号码！'
-                }]
-            },
-            address: {
-                identifier: 'address',
-                rules: [{
-                    type: 'empty',
-                    prompt: '请输入客户地址！'
+                    prompt: '请输入分类图片！'
                 }]
             }
         }

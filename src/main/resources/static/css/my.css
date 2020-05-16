@@ -99,7 +99,11 @@ body {
     padding-right: 2em !important;
 }
 
-.my-padded-b-small {
+.my-padded-b-one {
+    padding-bottom: 1em !important;
+}
+
+.my-padded-b-two {
     padding-bottom: 2em !important;
 }
 
@@ -145,6 +149,11 @@ body {
 .my-margin-tb-small {
     margin-top: 1em !important;
     margin-bottom: 1em !important;
+}
+
+.my-margin-tb-two {
+    margin-top: 2em !important;
+    margin-bottom: 2em !important;
 }
 
 .my-margin-top-tiny {

@@ -24,7 +24,7 @@ import java.util.List;
 @Service
 public class SupplierService {
     @Autowired
-    SupplierRepository supplierRepository;
+    private SupplierRepository supplierRepository;
 
     public Supplier getSupplierByName(String name) {
         return supplierRepository.findByName(name);

@@ -1,49 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/_fragments :: head(~{::title})">
-    <title>品牌</title>
+    <title>分类</title>
 </head>
 <body>
 <!--导航-->
-<nav th:replace="/_fragments :: menu(2)"></nav>
+<nav th:replace="/_fragments :: menu(3)"></nav>
 
 <!--中间内容-->
 <div class="my-container my-padded-tb-medium animated fadeIn">
     <div class="ui container">
-        <div class="ui my-padded-b-two form">
+        <div class="ui my-padded-b-one form">
             <input name="page" type="hidden">
-            <div class="ui fluid action input">
-                <label for="inputSearch"></label>
-                <input type="text" name="keyword" id="inputSearch" placeholder="输入关键字...">
+            <div class="fields">
+                <div class="field">
+                    <input name="keyword" id="inputSearch" placeholder="输入关键字..." type="text">
+                </div>
+                <div class="field">
+                    <div class="ui search selection dropdown">
+                        <input name="super" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">选择父类...</div>
+                        <div class="menu">
+                            <div class="item" th:data-value="${superClassification.id}"
+                                 th:each="superClassification : ${superClassifications}"
+                                 th:text="${superClassification.name}"></div>
+                        </div>
+                    </div>
+                </div>
                 <button type="button" id="search-btn" class="ui icon button">
                     <i class="search icon"></i>
+                </button>
+                <button type="button" id="empty-btn" class="ui icon button">
+                    <i class="reply all icon"></i>
                 </button>
             </div>
         </div>
         <div id="table-container">
-            <table class="ui compact celled table" th:fragment="brandList">
+            <table class="ui compact celled table" th:fragment="classificationList">
                 <thead>
                 <tr>
                     <th>序号</th>
-                    <th>品牌</th>
-                    <th>网址</th>
-                    <th>LOGO</th>
+                    <th>分类</th>
+                    <th>图片</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="brand,iterStat:${page.content}">
+                <tr th:each="classification,iterStat:${page.content}">
                     <td th:text="${iterStat.count}"></td>
-                    <td th:text="${brand.name}"></td>
-                    <td th:text="${brand.website}"></td>
-                    <td th:text="${brand.logo}"></td>
+                    <td th:text="${classification.name}"></td>
+                    <td th:text="${classification.picture}"></td>
                     <td>
                         <a class="ui mini icon button" href="#"
-                           th:href="@{/brands/{id}/edit(id=${brand.id})}">
+                           th:href="@{/classifications/{id}/edit(id=${classification.id})}">
                             <i class="edit icon"></i>
                         </a>
                         <a class="ui mini red icon button" href="#"
-                           th:href="@{/brands/{id}/delete(id=${brand.id})}">
+                           th:href="@{/classifications/{id}/delete(id=${classification.id})}">
                             <i class="trash alternate icon"></i>
                         </a>
                     </td>
@@ -64,7 +78,7 @@
                             </a>
                         </div>
                         <a class="ui right floated my-margin-zero_three mini icon button"
-                           href="#" th:href="@{/brands/input}">
+                           href="#" th:href="@{/classifications/input}">
                             <i class="plus icon"></i>
                         </a>
                     </th>
@@ -108,6 +122,10 @@
         loaddata();
     })
 
+    $("#empty-btn").click(function () {
+        location.reload()
+    })
+
     $('#inputSearch').bind('keyup', function (event) {
         if (event.key === "Enter") {
             $("#search-btn").click()
@@ -115,8 +133,9 @@
     })
 
     function loaddata() {
-        $("#table-container").load(/*[[@{/brands/search}]]*/"/brands/search", {
-            name: $("[name='keyword']").val(),
+        $("#table-container").load(/*[[@{/classifications/search}]]*/"/classifications/search", {
+            keyword: $("[name='keyword']").val(),
+            superId: $("[name='super']").val(),
             page: $("[name='page']").val()
         });
     }

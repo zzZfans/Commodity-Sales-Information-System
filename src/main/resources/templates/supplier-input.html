@@ -8,24 +8,24 @@
 <nav th:replace="/_fragments :: menu(5)"></nav>
 
 <!--中间内容-->
-<div class="my-container my-padded-tb-medium">
+<div class="my-container my-padded-tb-medium animated fadeIn">
     <div class="ui container my-padded-lr-big">
         <form action="#" class="ui form" method="post" th:action="@{/suppliers}" th:object="${supplier}">
             <input name="id" th:value="*{id}" type="hidden">
             <div class="field">
-                <label>供应商名称</label>
+                <label style="color: #f1f1f1">供应商名称</label>
                 <input name="name" placeholder="供应商名称..." th:value="*{name}" type="text">
             </div>
             <div class="field">
-                <label>联系人姓名</label>
+                <label style="color: #f1f1f1">联系人姓名</label>
                 <input name="contact" placeholder="联系人姓名..." th:value="*{contact}" type="text">
             </div>
             <div class="field">
-                <label>联系人电话</label>
+                <label style="color: #f1f1f1">联系人电话</label>
                 <input name="contactNumber" placeholder="联系人电话..." th:value="*{contactNumber}" type="text">
             </div>
             <div class="field">
-                <label>供应商简介</label>
+                <label style="color: #f1f1f1">供应商简介</label>
                 <input name="supplierProfile" placeholder="供应商简介..." th:value="*{supplierProfile}" type="text">
             </div>
             <!--/*/

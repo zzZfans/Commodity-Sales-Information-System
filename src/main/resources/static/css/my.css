@@ -1,6 +1,6 @@
 body {
     background: url("https://t1.picb.cc/uploads/2020/05/15/kYGdTd.jpg");
-
+    background-size: cover;
     display: flex; /* 设置flex */
     flex-direction: column; /* 方向为垂直方向 */
 }

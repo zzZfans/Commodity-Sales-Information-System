@@ -58,7 +58,7 @@
                            th:href="@{/classifications/{id}/edit(id=${classification.id})}">
                             <i class="edit icon"></i>
                         </a>
-                        <a th:class="${classification.subClassificationList.isEmpty()}?'ui mini red icon button':'ui mini disabled red icon button'"
+                        <a th:class="${classification.subClassificationList.isEmpty()&&classification.commodityList.isEmpty()}?'ui mini red icon button':'ui mini disabled red icon button'"
                            th:href="@{/classifications/{id}/delete(id=${classification.id})}">
                             <i class="trash alternate icon"></i>
                         </a>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/_fragments :: head(~{::title})">
+    <title>商品新增</title>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="/_fragments :: menu(1)"></nav>
+
+<!--中间内容-->
+<div class="my-container my-padded-tb-medium animated fadeIn">
+    <div class="ui container my-padded-lr-big">
+        <form action="#" class="ui form" method="post" th:action="@{/commodities}" th:object="${commodity}">
+            <input name="id" th:value="*{id}" type="hidden">
+            <div class="field">
+                <div class="two fields">
+                    <div class="field">
+                        <label style="color: #f1f1f1">代码
+                            <input name="code" placeholder="代码..." th:value="*{code}" type="text">
+                        </label>
+                    </div>
+                    <div class="field">
+                        <label style="color: #f1f1f1">商品名称
+                            <input name="name" placeholder="商品名称..." th:value="*{name}" type="text">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="four fields">
+                    <div class="field">
+                        <label style="color: #f1f1f1">规格
+                            <input name="specification" placeholder="规格..." th:value="*{specification}" type="text">
+                        </label>
+                    </div>
+                    <div class="field">
+                        <label style="color: #f1f1f1">型号
+                            <input name="model" placeholder="型号..." th:value="*{model}" type="text">
+                        </label>
+                    </div>
+                    <div class="field">
+                        <label style="color: #f1f1f1">库存
+                            <input name="quantity" placeholder="库存..." th:value="*{quantity}" type="text">
+                        </label>
+                    </div>
+                    <div class="field">
+                        <label style="color: #f1f1f1">单位
+                            <input name="unit" placeholder="单位..." th:value="*{unit}" type="text">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="three fields">
+                    <div class="field">
+                        <label style="color: #f1f1f1">市场价
+                            <input name="marketValue" placeholder="市场价..." th:value="*{marketValue}" type="text">
+                        </label>
+                    </div>
+                    <div class="field">
+                        <label style="color: #f1f1f1">售价
+                            <input name="salesPrice" placeholder="售价..." th:value="*{salesPrice}" type="text">
+                        </label>
+                    </div>
+                    <div class="field">
+                        <label style="color: #f1f1f1">成本
+                            <input name="costPrice" placeholder="成本..." th:value="*{costPrice}" type="text">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label style="color: #f1f1f1">商品缩略图
+                    <input name="picture" placeholder="商品缩略图URL..." th:value="*{picture}" type="text">
+                </label>
+            </div>
+            <div class="field">
+                <label style="color: #f1f1f1">商品介绍</label>
+                <textarea name="introduce" placeholder="商品介绍..." rows="3" th:text="*{introduce}"></textarea>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label style="color: #f1f1f1">品牌</label>
+                    <div class="ui fluid search selection dropdown">
+                        <input name="brand.id" th:value="*{brand}==null?null:*{brand.id}" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">选择品牌...</div>
+                        <div class="menu">
+                            <div class="item" th:data-value="${brand.id}"
+                                 th:each="brand : ${brands}"
+                                 th:text="${brand.name}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label style="color: #f1f1f1">分类</label>
+                    <div class="ui fluid search selection dropdown">
+                        <input name="classification.id" th:value="*{classification}==null?null:*{classification.id}"
+                               type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">选择分类...</div>
+                        <div class="menu">
+                            <div class="item" th:data-value="${classification.id}"
+                                 th:each="classification : ${classifications}"
+                                 th:text="${classification.name}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label style="color: #f1f1f1">供应商</label>
+                <div class="ui fluid multiple search selection dropdown">
+                    <input name="supplierIds" th:value="*{supplierIds}" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">选择供应商...</div>
+                    <div class="menu">
+                        <div class="item" th:data-value="${supplier.id}"
+                             th:each="supplier : ${suppliers}"
+                             th:text="${supplier.name}"></div>
+                    </div>
+                </div>
+            </div>
+            <!--/*/
+                  <div class="ui negative message" th:if="${#fields.hasErrors('name')}">
+                      <i class="close icon" id="errorMessageCloseIcon"></i>
+                      <div class="header">验证失败</div>
+                      <p th:errors="*{name}">提交信息不符合规则</p>
+                  </div>
+                  /*/-->
+            <div class="ui right aligned container">
+                <button class="ui button" onclick="window.history.go(-1)" type="button">返回</button>
+                <button class="ui teal button" id="submit-btn">提交</button>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+
+<!--底部footer-->
+<footer th:replace="/_fragments :: footer"></footer>
+
+<th:block th:replace="/_fragments :: script"></th:block>
+
+
+<script>
+    $("#errorMessageCloseIcon").click(function () {
+        $('.ui.negative.message').hide()
+    })
+
+    $('.menu.toggle').click(function () {
+        $('.my-item').toggleClass('my-mobile-hide');
+    });
+
+    $('.ui.form').form({
+        fields: {
+            code: {
+                identifier: 'code',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品代码！'
+                }]
+            },
+            name: {
+                identifier: 'name',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品名称！'
+                }]
+            },
+            specification: {
+                identifier: 'specification',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品规格！'
+                }]
+            },
+            model: {
+                identifier: 'model',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品型号！'
+                }]
+            },
+            quantity: {
+                identifier: 'quantity',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品库存！'
+                }]
+            },
+            unit: {
+                identifier: 'unit',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入计量单位！'
+                }]
+            },
+            marketValue: {
+                identifier: 'marketValue',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品市场价！'
+                }]
+            },
+            salesPrice: {
+                identifier: 'salesPrice',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品售价！'
+                }]
+            },
+            costPrice: {
+                identifier: 'costPrice',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品成本！'
+                }]
+            },
+            picture: {
+                identifier: 'picture',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品缩略图！'
+                }]
+            },
+            introduce: {
+                identifier: 'introduce',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入商品介绍！'
+                }]
+            },
+            brand: {
+                identifier: 'brand.id',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请选择商品品牌！'
+                }]
+            },
+            classification: {
+                identifier: 'classification.id',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请选择商品分类！'
+                }]
+            },
+            supplierIds: {
+                identifier: 'supplierIds',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请选择商品供应商！'
+                }]
+            }
+
+        }
+    });
+</script>
+</body>
+</html>

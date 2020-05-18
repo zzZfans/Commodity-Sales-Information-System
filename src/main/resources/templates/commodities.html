@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/_fragments :: head(~{::title})">
+    <title>商品</title>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="/_fragments :: menu(1)"></nav>
+
+<!--中间内容-->
+<div class="my-container my-padded-tb-medium animated fadeIn">
+    <div class="ui container">
+        <div class="ui my-padded-b-one form">
+            <input name="page" type="hidden">
+            <div class="fields">
+                <div class="field">
+                    <input id="inputSearch" name="keyword" placeholder="输入关键字..." type="text">
+                </div>
+                <div class="field">
+                    <div class="ui search selection dropdown">
+                        <input name="brand" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">选择品牌...</div>
+                        <div class="menu">
+                            <div class="item" th:data-value="${brand.id}"
+                                 th:each="brand : ${brands}"
+                                 th:text="${brand.name}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui search selection dropdown">
+                        <input name="classification" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">选择分类...</div>
+                        <div class="menu">
+                            <div class="item" th:data-value="${classification.id}"
+                                 th:each="classification : ${classifications}"
+                                 th:text="${classification.name}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui search selection dropdown">
+                        <input name="supplier" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">选择供应商...</div>
+                        <div class="menu">
+                            <div class="item" th:data-value="${supplier.id}"
+                                 th:each="supplier : ${suppliers}"
+                                 th:text="${supplier.name}"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="ui icon button" id="search-btn" type="button">
+                    <i class="search icon"></i>
+                </button>
+                <button class="ui icon button" id="empty-btn" type="button">
+                    <i class="reply all icon"></i>
+                </button>
+            </div>
+        </div>
+        <div id="table-container">
+            <table class="ui compact celled table" th:fragment="commodityList">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>代码</th>
+                    <th>商品</th>
+                    <th>规格</th>
+                    <th>型号</th>
+                    <th>售价</th>
+                    <th>库存</th>
+                    <th>品牌</th>
+                    <th>分类</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="commodity,iterStat:${page.content}">
+                    <td th:text="${iterStat.count}"></td>
+                    <td th:text="${commodity.code}"></td>
+                    <td th:text="${commodity.name}"></td>
+                    <td th:text="${commodity.specification}"></td>
+                    <td th:text="${commodity.model}"></td>
+                    <td th:text="${commodity.salesPrice}"></td>
+                    <td th:text="${commodity.quantity}"></td>
+                    <td th:text="${commodity.brand.name}"></td>
+                    <td th:text="${commodity.classification.name}"></td>
+                    <td>
+                        <a class="ui mini icon button" href="#"
+                           th:href="@{/commodities/{id}/edit(id=${commodity.id})}">
+                            <i class="archive icon"></i>
+                        </a>
+                        <a class="ui mini icon button" href="#"
+                           th:href="@{/commodities/{id}/edit(id=${commodity.id})}">
+                            <i class="edit icon"></i>
+                        </a>
+                        <a class="ui mini red icon button" href="#"
+                           th:href="@{/commodities/{id}/delete(id=${commodity.id})}">
+                            <i class="trash alternate icon"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <!--colspan 合并单元格-->
+                    <th colspan="10">
+                        <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
+                            <a class="item icon" onclick="page(this)" th:attr="data-page=${page.number}-1"
+                               th:unless="${page.first}">
+                                <i class="chevron left icon"></i>
+                            </a>
+                            <a class="item icon" onclick="page(this)" th:attr="data-page=${page.number}+1"
+                               th:unless="${page.last}">
+                                <i class="chevron right icon"></i>
+                            </a>
+                        </div>
+                        <a class="ui right floated my-margin-zero_three mini icon button"
+                           href="#" th:href="@{/commodities/input}">
+                            <i class="plus icon"></i>
+                        </a>
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="ui success message my-padded-tb-zero" th:unless="${#strings.isEmpty(message)}">
+            <div class="ui two column grid">
+                <div class="column">
+                    <h4 th:text="${message}"></h4>
+                </div>
+                <div class="right aligned column">
+                    <i class="close icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--底部footer-->
+<footer th:replace="/_fragments :: footer"></footer>
+
+<th:block th:replace="/_fragments :: script"></th:block>
+
+<script>
+    $('.message .close').on('click', function () {
+        $(this).closest('.message').transition('fade');
+    });
+
+    setTimeout(function () {
+        $('.message .close').click();
+    }, 3000);
+
+    function page(obj) {
+        $("[name='page']").val($(obj).data("page"));
+        loaddata();
+    }
+
+    $("#search-btn").click(function () {
+        loaddata();
+    })
+
+    $("#empty-btn").click(function () {
+        location.reload()
+    })
+
+    $('#inputSearch').bind('keyup', function (event) {
+        if (event.key === "Enter") {
+            $("#search-btn").click()
+        }
+    })
+
+    function loaddata() {
+        $("#table-container").load(/*[[@{/commodities/search}]]*/"/commodities/search", {
+            keyword: $("[name='keyword']").val(),
+            brandId: $("[name='brand']").val(),
+            classificationId: $("[name='classification']").val(),
+            supplierId: $("[name='supplier']").val(),
+            page: $("[name='page']").val()
+        });
+    }
+
+</script>
+</body>
+</html>

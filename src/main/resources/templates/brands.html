@@ -38,11 +38,11 @@
                     <td th:text="${brand.website}"></td>
                     <td th:text="${brand.logo}"></td>
                     <td>
-                        <a class="ui mini icon button" href="#"
+                        <a class="ui mini icon button"
                            th:href="@{/brands/{id}/edit(id=${brand.id})}">
                             <i class="edit icon"></i>
                         </a>
-                        <a class="ui mini red icon button" href="#"
+                        <a th:class="${brand.commodityList.isEmpty()}?'ui mini red icon button':'ui mini disabled red icon button'"
                            th:href="@{/brands/{id}/delete(id=${brand.id})}">
                             <i class="trash alternate icon"></i>
                         </a>
@@ -52,7 +52,7 @@
                 <tfoot>
                 <tr>
                     <!--colspan 合并单元格-->
-                    <th colspan="6">
+                    <th colspan="5">
                         <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
                             <a onclick="page(this)" class="item icon" th:attr="data-page=${page.number}-1"
                                th:unless="${page.first}">

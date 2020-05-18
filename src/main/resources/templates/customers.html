@@ -26,8 +26,8 @@
                 <tr>
                     <th>序号</th>
                     <th>客户号</th>
-                    <th>客户</th>
-                    <th>电话号码</th>
+                    <th>客户名</th>
+                    <th>电话</th>
                     <th>地址</th>
                     <th>操作</th>
                 </tr>
@@ -40,11 +40,11 @@
                     <td th:text="${customer.phoneNumber}"></td>
                     <td th:text="${customer.address}"></td>
                     <td>
-                        <a class="ui mini icon button" href="#"
+                        <a class="ui mini icon button"
                            th:href="@{/customers/{id}/edit(id=${customer.id})}">
                             <i class="edit icon"></i>
                         </a>
-                        <a class="ui mini red icon button" href="#"
+                        <a th:class="${customer.orderMasterList.isEmpty()}?'ui mini red icon button':'ui mini disabled red icon button'"
                            th:href="@{/customers/{id}/delete(id=${customer.id})}">
                             <i class="trash alternate icon"></i>
                         </a>

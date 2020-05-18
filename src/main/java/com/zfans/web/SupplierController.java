@@ -1,6 +1,5 @@
 package com.zfans.web;
 
-import com.zfans.entity.Brand;
 import com.zfans.entity.Supplier;
 import com.zfans.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +27,8 @@ public class SupplierController {
 
     @GetMapping("/suppliers")
     public String suppliers(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
-                                    Pageable pageable, Supplier supplier, Model model) {
-        model.addAttribute("page", supplierService.listSupplier(pageable, supplier));
+                                    Pageable pageable, Model model) {
+        model.addAttribute("page", supplierService.listSupplier(pageable));
         return "suppliers";
     }
 

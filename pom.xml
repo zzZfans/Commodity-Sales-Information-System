@@ -16,8 +16,6 @@
 
     <properties>
         <java.version>1.8</java.version>
-
-        <thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
     </properties>
 
     <dependencies>

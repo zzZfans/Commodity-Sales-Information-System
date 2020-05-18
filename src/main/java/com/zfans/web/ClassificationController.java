@@ -1,10 +1,8 @@
 package com.zfans.web;
 
-import com.zfans.entity.Brand;
 import com.zfans.entity.Classification;
 import com.zfans.service.ClassificationService;
 import com.zfans.vo.ClassificationQuery;
-import org.springframework.beans.CachedIntrospectionResults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * @author Zfans
@@ -33,9 +30,9 @@ public class ClassificationController {
 
     @GetMapping("/classifications")
     public String classifications(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
-                                          Pageable pageable, ClassificationQuery classificationQuery, Model model) {
+                                          Pageable pageable, Model model) {
         model.addAttribute("superClassifications", classificationService.listClassification());
-        model.addAttribute("page", classificationService.listClassification(pageable, classificationQuery));
+        model.addAttribute("page", classificationService.listClassification(pageable));
         return "classifications";
     }
 
@@ -72,19 +69,19 @@ public class ClassificationController {
             classification.setSuperClassification(null);
         }
         Classification c = classificationService.saveClassification(classification);
-//        if (c == null) {
-//            if (t1.getId() != null) {
-//                attributes.addFlashAttribute("message", "修改失败！");
-//            } else {
-//                attributes.addFlashAttribute("message", "添加失败！");
-//            }
-//        } else {
-//            if (t1.getId() != null) {
-//                attributes.addFlashAttribute("message", "修改成功！");
-//            } else {
-//                attributes.addFlashAttribute("message", "添加成功！");
-//            }
-//        }
+        if (c == null) {
+            if (t1.getId() != null) {
+                attributes.addFlashAttribute("message", "修改失败！");
+            } else {
+                attributes.addFlashAttribute("message", "添加失败！");
+            }
+        } else {
+            if (t1.getId() != null) {
+                attributes.addFlashAttribute("message", "修改成功！");
+            } else {
+                attributes.addFlashAttribute("message", "添加成功！");
+            }
+        }
         return "redirect:/classifications";
     }
 
@@ -98,7 +95,7 @@ public class ClassificationController {
     @GetMapping("/classifications/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes attributes) {
         classificationService.deleteClassificationById(id);
-//        attributes.addFlashAttribute("message", "删除成功！");
+        attributes.addFlashAttribute("message", "删除成功！");
         return "redirect:/classifications";
     }
 

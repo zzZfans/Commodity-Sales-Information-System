@@ -27,8 +27,8 @@ public class BrandController {
 
     @GetMapping("/brands")
     public String brands(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
-                                 Pageable pageable, Brand brand, Model model) {
-        model.addAttribute("page", brandService.listBrand(pageable, brand));
+                                 Pageable pageable, Model model) {
+        model.addAttribute("page", brandService.listBrand(pageable));
         return "brands";
     }
 

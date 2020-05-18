@@ -1,10 +1,7 @@
 package com.zfans.entity;
 
-import ch.qos.logback.classic.db.names.ColumnName;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -27,6 +24,7 @@ public class Commodity {
     private String name;
     private String specification;
     private String model;
+    private String nameSpecificationModel;
     private String unit;
     @Column(precision = 8, scale = 2)
     private BigDecimal marketValue;
@@ -37,6 +35,9 @@ public class Commodity {
     private String picture;
     private String introduce;
     private Integer quantity;
+
+    @Transient //不入库
+    private String supplierIds;
 
     @ManyToOne
     private Brand brand;
@@ -49,4 +50,26 @@ public class Commodity {
 
     @ManyToOne
     private Classification classification;
+
+    public void initSupplierIds() {
+        this.supplierIds = supplierListToSupplierIds(this.getSupplierList());
+    }
+
+    private String supplierListToSupplierIds(List<Supplier> supplierList) {
+        if (!supplierList.isEmpty()) {
+            StringBuilder ids = new StringBuilder();
+            boolean flag = false;
+            for (Supplier tag : supplierList) {
+                if (flag) {
+                    ids.append(",");
+                } else {
+                    flag = true;
+                }
+                ids.append(tag.getId());
+            }
+            return ids.toString();
+        } else {
+            return supplierIds;
+        }
+    }
 }

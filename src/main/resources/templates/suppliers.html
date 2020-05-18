@@ -27,8 +27,8 @@
                     <th>序号</th>
                     <th>供应商</th>
                     <th>联系人</th>
-                    <th>联系人电话</th>
-                    <th>供应商简介</th>
+                    <th>电话</th>
+                    <th>简介</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -40,11 +40,11 @@
                     <td th:text="${supplier.contactNumber}"></td>
                     <td th:text="${supplier.supplierProfile}"></td>
                     <td>
-                        <a class="ui mini icon button" href="#"
+                        <a class="ui mini icon button"
                            th:href="@{/suppliers/{id}/edit(id=${supplier.id})}">
                             <i class="edit icon"></i>
                         </a>
-                        <a class="ui mini red icon button" href="#"
+                        <a th:class="${supplier.commodityList.isEmpty()}?'ui mini red icon button':'ui mini disabled red icon button'"
                            th:href="@{/suppliers/{id}/delete(id=${supplier.id})}">
                             <i class="trash alternate icon"></i>
                         </a>

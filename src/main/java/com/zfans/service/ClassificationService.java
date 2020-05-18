@@ -1,7 +1,6 @@
 package com.zfans.service;
 
 import com.zfans.dao.ClassificationRepository;
-import com.zfans.entity.Brand;
 import com.zfans.entity.Classification;
 import com.zfans.vo.ClassificationQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import sun.reflect.generics.repository.ClassRepository;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +37,10 @@ public class ClassificationService {
 
     public List<Classification> listClassification() {
         return classificationRepository.findAll();
+    }
+
+    public Page<Classification> listClassification(Pageable pageable) {
+        return classificationRepository.findAll(pageable);
     }
 
     public Page<Classification> listClassification(Pageable pageable, ClassificationQuery classificationQuery) {

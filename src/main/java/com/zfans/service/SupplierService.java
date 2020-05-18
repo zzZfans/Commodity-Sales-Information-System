@@ -1,7 +1,6 @@
 package com.zfans.service;
 
 import com.zfans.dao.SupplierRepository;
-import com.zfans.entity.Brand;
 import com.zfans.entity.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,10 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +35,21 @@ public class SupplierService {
 
     public List<Supplier> listSupplier() {
         return supplierRepository.findAll();
+    }
+
+    private List<Long> convertToList(String ids) {
+        List<Long> list = new ArrayList<>();
+        if (!"".equals(ids) && ids != null) {
+            String[] idarray = ids.split(",");
+            for (String s : idarray) {
+                list.add(new Long(s));
+            }
+        }
+        return list;
+    }
+
+    public List<Supplier> listSupplier(String suppliers) {
+        return supplierRepository.findAllById(convertToList(suppliers));
     }
 
     public Page<Supplier> listSupplier(Pageable pageable, Supplier supplier) {

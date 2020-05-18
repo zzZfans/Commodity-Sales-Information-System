@@ -1,6 +1,5 @@
 package com.zfans.web;
 
-import com.zfans.entity.Brand;
 import com.zfans.entity.Customer;
 import com.zfans.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +27,8 @@ public class CustomerController {
 
     @GetMapping("/customers")
     public String customers(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
-                                    Pageable pageable, Customer customer, Model model) {
-        model.addAttribute("page", customerService.listCustomer(pageable, customer));
+                                    Pageable pageable, Model model) {
+        model.addAttribute("page", customerService.listCustomer(pageable));
         return "customers";
     }
 

@@ -38,9 +38,26 @@ public class CommodityController {
     @GetMapping("/commodities")
     public String commodities(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
                                       Pageable pageable, Model model) {
+        model.addAttribute("idDetails", false);
+        model.addAttribute("commodity", new Commodity());
         model.addAttribute("brands", brandService.listBrand());
         model.addAttribute("classifications", classificationService.listClassification());
         model.addAttribute("suppliers", supplierService.listSupplier());
+        model.addAttribute("commodities", commodityService.listCommodity());
+        model.addAttribute("page", commodityService.listCommodity(pageable));
+        return "commodities";
+    }
+
+    @GetMapping("/commodities/{id}")
+    public String commodities(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+                                      Pageable pageable, Model model, @PathVariable Long id) {
+        model.addAttribute("idDetails", true);
+        Commodity commodity = commodityService.getCommodityById(id);
+        commodity.initSupplierIds();
+        model.addAttribute("brands", brandService.listBrand());
+        model.addAttribute("classifications", classificationService.listClassification());
+        model.addAttribute("suppliers", supplierService.listSupplier());
+        model.addAttribute("commodity", commodity);
         model.addAttribute("commodities", commodityService.listCommodity());
         model.addAttribute("page", commodityService.listCommodity(pageable));
         return "commodities";
@@ -149,7 +166,7 @@ public class CommodityController {
         model.addAttribute("brands", brandService.listBrand());
         model.addAttribute("classifications", classificationService.listClassification());
         model.addAttribute("suppliers", supplierService.listSupplier());
-        model.addAttribute("commodity", commodityService.getCommodityById(id));
+        model.addAttribute("commodity", commodity);
         return "commodity-input";
     }
 

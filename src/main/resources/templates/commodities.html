@@ -88,15 +88,14 @@
                     <td th:text="${commodity.brand.name}"></td>
                     <td th:text="${commodity.classification.name}"></td>
                     <td>
-                        <a class="ui mini icon button" href="#"
-                           th:href="@{/commodities/{id}/edit(id=${commodity.id})}">
+                        <a class="ui mini icon button" th:href="@{/commodities/{id}(id=${commodity.id})}">
                             <i class="archive icon"></i>
                         </a>
-                        <a class="ui mini icon button" href="#"
+                        <a class="ui mini icon button"
                            th:href="@{/commodities/{id}/edit(id=${commodity.id})}">
                             <i class="edit icon"></i>
                         </a>
-                        <a class="ui mini red icon button" href="#"
+                        <a class="ui mini red icon button"
                            th:href="@{/commodities/{id}/delete(id=${commodity.id})}">
                             <i class="trash alternate icon"></i>
                         </a>
@@ -139,12 +138,145 @@
     </div>
 </div>
 
+<!--弹出层-->
+<div class="ui modal">
+    <div class="header">
+        商品详情
+    </div>
+    <div class="my-container my-padded-tb-small">
+        <div class="ui container my-padded-lr-big">
+            <form action="#" class="ui form" method="post" th:action="@{/commodities}" th:object="${commodity}">
+                <input name="id" th:value="*{id}" type="hidden">
+                <div class="field">
+                    <div class="two fields">
+                        <div class="field">
+                            <label style="color: #333333">代码
+                                <input name="code" placeholder="代码..." th:value="*{code}" type="text">
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label style="color: #333333">商品名称
+                                <input name="name" placeholder="商品名称..." th:value="*{name}" type="text">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="four fields">
+                        <div class="field">
+                            <label style="color: #333333">规格
+                                <input name="specification" placeholder="规格..." th:value="*{specification}" type="text">
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label style="color: #333333">型号
+                                <input name="model" placeholder="型号..." th:value="*{model}" type="text">
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label style="color: #333333">库存
+                                <input name="quantity" placeholder="库存..." th:value="*{quantity}" type="text">
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label style="color: #333333">单位
+                                <input name="unit" placeholder="单位..." th:value="*{unit}" type="text">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="three fields">
+                        <div class="field">
+                            <label style="color: #333333">市场价
+                                <input name="marketValue" placeholder="市场价..." th:value="*{marketValue}" type="text">
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label style="color: #333333">售价
+                                <input name="salesPrice" placeholder="售价..." th:value="*{salesPrice}" type="text">
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label style="color: #333333">成本
+                                <input name="costPrice" placeholder="成本..." th:value="*{costPrice}" type="text">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label style="color: #333333">商品缩略图
+                        <input name="picture" placeholder="商品缩略图URL..." th:value="*{picture}" type="text">
+                    </label>
+                </div>
+                <div class="field">
+                    <label style="color: #333333">商品介绍</label>
+                    <textarea name="introduce" placeholder="商品介绍..." rows="3" th:text="*{introduce}"></textarea>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label style="color: #333333">品牌</label>
+                        <div class="ui fluid search selection dropdown">
+                            <input name="brand.id" th:value="*{brand}==null?null:*{brand.id}" type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">选择品牌...</div>
+                            <div class="menu">
+                                <div class="item" th:data-value="${brand.id}"
+                                     th:each="brand : ${brands}"
+                                     th:text="${brand.name}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label style="color: #333333">分类</label>
+                        <div class="ui fluid search selection dropdown">
+                            <input name="classification.id" th:value="*{classification}==null?null:*{classification.id}"
+                                   type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">选择分类...</div>
+                            <div class="menu">
+                                <div class="item" th:data-value="${classification.id}"
+                                     th:each="classification : ${classifications}"
+                                     th:text="${classification.name}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label style="color: #333333">供应商</label>
+                    <div class="ui fluid multiple search selection dropdown">
+                        <input name="supplierIds" th:value="*{supplierIds}" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">选择供应商...</div>
+                        <div class="menu">
+                            <div class="item" th:data-value="${supplier.id}"
+                                 th:each="supplier : ${suppliers}"
+                                 th:text="${supplier.name}"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui positive button">关闭</div>
+    </div>
+</div>
+
+
 <!--底部footer-->
 <footer th:replace="/_fragments :: footer"></footer>
 
 <th:block th:replace="/_fragments :: script"></th:block>
 
 <script>
+
+    const idDetails = [[${idDetails}]];
+
+    $('.ui.modal')
+        .modal(idDetails ? 'show' : 'hide')
+    ;
+
     $('.message .close').on('click', function () {
         $(this).closest('.message').transition('fade');
     });

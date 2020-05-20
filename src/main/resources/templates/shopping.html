@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/_fragments :: head(~{::title})">
+    <title>购物</title>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="/_fragments :: menu(2)"></nav>
+
+<!--中间内容-->
+<div class="my-container my-padded-tb-medium animated fadeIn">
+    <div class="ui container my-padded-lr-big">
+        <form class="ui form" method="post" th:action="@{/orderDetails}" th:object="${orderDetail}">
+            <input name="totalAmount" th:value="*{totalAmount}" type="hidden">
+            <div class="field">
+                <label style="color: #f1f1f1">选择商品</label>
+                <div class="ui fluid search selection dropdown">
+                    <input name="commodity.id"
+                           th:value="*{commodity}==null?null:*{commodity.id}" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">选择商品...</div>
+                    <div class="menu">
+                        <div class="item" th:data-value="${commodity.id}"
+                             th:each="commodity : ${commodities}"
+                             th:text="${commodity.nameSpecificationModel}+'（'+'库存：'+${commodity.quantity}+'）'"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label style="color: #f1f1f1">数量</label>
+                <input name="orderQuantity" placeholder="数量..." th:value="*{orderQuantity}" type="text">
+            </div>
+            <!--/*/
+            <div class="ui negative message" th:if="${#fields.hasErrors('id')}">
+                <i class="close icon" id="errorMessageCloseIcon"></i>
+                <div class="header">验证失败</div>
+                <p th:errors="*{id}">提交信息不符合规则</p>
+            </div>
+            /*/-->
+            <div class="ui right aligned container">
+                <button class="ui button" onclick="window.history.go(-1)" type="button">返回</button>
+                <button class="ui teal button" id="submit-btn">添加</button>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+
+<!--底部footer-->
+<footer th:replace="/_fragments :: footer"></footer>
+
+<th:block th:replace="/_fragments :: script"></th:block>
+
+
+<script>
+    $("#errorMessageCloseIcon").click(function () {
+        $('.ui.negative.message').hide()
+    })
+
+    $('.menu.toggle').click(function () {
+        $('.my-item').toggleClass('my-mobile-hide');
+    });
+
+    $('.ui.form').form({
+        fields: {
+            commodity: {
+                identifier: 'commodity.id',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请选择商品！'
+                }]
+            },
+            orderQuantity: {
+                identifier: 'orderQuantity',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入数量！'
+                }]
+            }
+        }
+    });
+</script>
+</body>
+</html>

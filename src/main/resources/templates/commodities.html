@@ -5,7 +5,7 @@
 </head>
 <body>
 <!--导航-->
-<nav th:replace="/_fragments :: menu(1)"></nav>
+<nav th:replace="/_fragments :: menu(3)"></nav>
 
 <!--中间内容-->
 <div class="my-container my-padded-tb-medium animated fadeIn">
@@ -139,13 +139,13 @@
 </div>
 
 <!--弹出层-->
-<div class="ui modal">
-    <div class="header">
-        商品详情
-    </div>
+<div class="ui modal" th:object="${commodity}">
+
+    <div class="header" th:text="*{name}+'-'+*{specification}+'-'+*{model}"></div>
+
     <div class="my-container my-padded-tb-small">
         <div class="ui container my-padded-lr-big">
-            <form action="#" class="ui form" method="post" th:action="@{/commodities}" th:object="${commodity}">
+            <form action="#" class="ui form" method="post" th:action="@{/commodities}">
                 <input name="id" th:value="*{id}" type="hidden">
                 <div class="field">
                     <div class="two fields">
@@ -258,9 +258,11 @@
             </form>
         </div>
     </div>
+
     <div class="actions">
         <div class="ui positive button">关闭</div>
     </div>
+
 </div>
 
 

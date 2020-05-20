@@ -5,7 +5,7 @@
 </head>
 <body>
 <!--导航-->
-<nav th:replace="/_fragments :: menu(2)"></nav>
+<nav th:replace="/_fragments :: menu(4)"></nav>
 
 <!--中间内容-->
 <div class="my-container my-padded-tb-medium animated fadeIn">
@@ -14,6 +14,7 @@
             <input name="id" th:value="*{id}" type="hidden">
             <div class="field">
                 <label style="color: #f1f1f1">品牌名称</label>
+                <!--name="name" 指定数据绑定到实体的那个属性-->
                 <input name="name" placeholder="品牌名称..." th:value="*{name}" type="text">
             </div>
             <div class="field">

@@ -1,51 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/_fragments :: head(~{::title})">
-    <title>客户</title>
+    <title>商品</title>
 </head>
 <body>
 <!--导航-->
-<nav th:replace="/_fragments :: menu(6)"></nav>
+<nav th:replace="/_fragments :: menu(2)"></nav>
 
 <!--中间内容-->
 <div class="my-container my-padded-tb-medium animated fadeIn">
     <div class="ui container">
-        <div class="ui my-padded-b-two form">
+        <div class="ui my-padded-b-one form">
             <input name="page" type="hidden">
-            <div class="ui fluid action input">
-                <label for="inputSearch"></label>
-                <input type="text" name="keyword" id="inputSearch" placeholder="输入关键字...">
-                <button type="button" id="search-btn" class="ui icon button">
-                    <i class="search icon"></i>
-                </button>
-            </div>
         </div>
         <div id="table-container">
-            <table class="ui compact celled table" th:fragment="customerList">
+            <table class="ui compact celled table">
                 <thead>
                 <tr>
                     <th>序号</th>
-                    <th>客户号</th>
-                    <th>客户名</th>
-                    <th>电话</th>
-                    <th>地址</th>
+                    <th>商品</th>
+                    <th>规格</th>
+                    <th>型号</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>总价</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="customer,iterStat:${page.content}">
+                <tr th:each="orderDetails,iterStat:${page.content}">
                     <td th:text="${iterStat.count}"></td>
-                    <td th:text="${customer.customerNumber}"></td>
-                    <td th:text="${customer.name}"></td>
-                    <td th:text="${customer.phoneNumber}"></td>
-                    <td th:text="${customer.address}"></td>
+                    <td th:text="${orderDetails.commodity.name}"></td>
+                    <td th:text="${orderDetails.commodity.specification}"></td>
+                    <td th:text="${orderDetails.commodity.model}"></td>
+                    <td th:text="${orderDetails.commodity.salesPrice}"></td>
+                    <td th:text="${orderDetails.orderQuantity}"></td>
+                    <td th:text="${orderDetails.totalAmount}"></td>
                     <td>
                         <a class="ui mini icon button"
-                           th:href="@{/customers/{id}/edit(id=${customer.id})}">
+                           th:href="@{/orderDetails/{id}/edit(id=${orderDetails.commodity.id})}">
                             <i class="edit icon"></i>
                         </a>
-                        <a th:class="${customer.orderMasterList.isEmpty()}?'ui mini red icon button':'ui mini disabled red icon button'"
-                           th:href="@{/customers/{id}/delete(id=${customer.id})}">
+                        <a class="ui mini red icon button"
+                           th:href="@{/orderDetails/{id}/delete(id=${orderDetails.commodity.id})}">
                             <i class="trash alternate icon"></i>
                         </a>
                     </td>
@@ -54,19 +51,23 @@
                 <tfoot>
                 <tr>
                     <!--colspan 合并单元格-->
-                    <th colspan="6">
+                    <th colspan="8">
                         <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
-                            <a onclick="page(this)" class="item icon" th:attr="data-page=${page.number}-1"
+                            <a class="item icon" onclick="page(this)" th:attr="data-page=${page.number}-1"
                                th:unless="${page.first}">
                                 <i class="chevron left icon"></i>
                             </a>
-                            <a onclick="page(this)" class="item icon" th:attr="data-page=${page.number}+1"
+                            <a class="item icon" onclick="page(this)" th:attr="data-page=${page.number}+1"
                                th:unless="${page.last}">
                                 <i class="chevron right icon"></i>
                             </a>
                         </div>
+                        <a class="ui right floated my-margin-zero_three mini red icon button"
+                           th:href="@{/commodities/input}">
+                            结算
+                        </a>
                         <a class="ui right floated my-margin-zero_three mini icon button"
-                           href="#" th:href="@{/customers/input}">
+                           th:href="@{/orderDetails/shopping}">
                             <i class="plus icon"></i>
                         </a>
                     </th>
@@ -93,6 +94,7 @@
 <th:block th:replace="/_fragments :: script"></th:block>
 
 <script>
+
     $('.message .close').on('click', function () {
         $(this).closest('.message').transition('fade');
     });
@@ -101,29 +103,6 @@
         $('.message .close').click();
     }, 3000);
 
-    function page(obj) {
-        $("[name='page']").val($(obj).data("page"));
-        loaddata();
-    }
-
-    $("#search-btn").click(function () {
-        loaddata();
-    })
-
-    $('#inputSearch').bind('keyup', function (event) {
-        if (event.key === "Enter") {
-            $("#search-btn").click()
-        }
-    })
-
-    function loaddata() {
-        $("#table-container").load(/*[[@{/customers/search}]]*/"/customers/search", {
-            name: $("[name='keyword']").val(),
-            page: $("[name='page']").val()
-        });
-    }
-
 </script>
-
 </body>
 </html>

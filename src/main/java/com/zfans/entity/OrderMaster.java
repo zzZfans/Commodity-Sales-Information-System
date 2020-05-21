@@ -1,6 +1,5 @@
 package com.zfans.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,6 +22,8 @@ public class OrderMaster {
     private Long id;
     @Column(unique = true)
     private String orderNo;
+    private String contactNumber;
+    private String receivingAddress;
     private String postalCode;
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderTime;
@@ -32,6 +33,6 @@ public class OrderMaster {
     @ManyToOne
     private Customer customer;
 
-    @OneToMany(mappedBy = "orderMaster")
+    @OneToMany(mappedBy = "orderMaster", cascade = {CascadeType.REMOVE})
     private List<OrderDetail> orderDetailList = new ArrayList<>();
 }

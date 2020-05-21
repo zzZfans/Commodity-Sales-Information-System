@@ -45,8 +45,8 @@ public class Commodity {
     @ManyToMany(cascade = {CascadeType.PERSIST})
     private List<Supplier> supplierList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "commodity")
-    private OrderDetail orderDetail;
+    @OneToMany(mappedBy = "commodity")
+    private List<OrderDetail> orderDetailList = new ArrayList<>();
 
     @ManyToOne
     private Classification classification;

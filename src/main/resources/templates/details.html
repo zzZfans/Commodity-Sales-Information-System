@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/_fragments :: head(~{::title})">
-    <title>商品</title>
+    <title>订单详情</title>
 </head>
 <body>
 <!--导航-->
@@ -24,7 +24,6 @@
                     <th>单价</th>
                     <th>数量</th>
                     <th>总价</th>
-                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,16 +35,7 @@
                     <td th:text="${orderDetails.commodity.salesPrice}"></td>
                     <td th:text="${orderDetails.orderQuantity}"></td>
                     <td th:text="${orderDetails.totalAmount}"></td>
-                    <td>
-                        <a class="ui mini icon button"
-                           th:href="@{/orderDetails/{id}/edit(id=${orderDetails.commodity.id})}">
-                            <i class="edit icon"></i>
-                        </a>
-                        <a class="ui mini red icon button"
-                           th:href="@{/orderDetails/{id}/delete(id=${orderDetails.commodity.id})}">
-                            <i class="trash alternate icon"></i>
-                        </a>
-                    </td>
+
                 </tr>
                 </tbody>
                 <tfoot>
@@ -62,17 +52,6 @@
                                 <i class="chevron right icon"></i>
                             </a>
                         </div>
-                        <a th:class="${quantity==0?'ui right floated my-margin-zero_three mini red icon disabled button':'ui right floated my-margin-zero_three mini red icon button'}"
-                           th:href="@{/orderDetails/settlement}" th:text="提交订单+'（'+${quantity}+'）'">
-                        </a>
-                        <label class="ui right floated my-margin-zero_three mini transparent-background icon button"
-                               style="color: #d01919"
-                               th:text="合计+'：￥'+${totalMoney}">
-                        </label>
-                        <a class="ui right floated my-margin-zero_three mini icon button"
-                           th:href="@{/orderDetails/shopping}">
-                            <i class="plus icon"></i>
-                        </a>
                         <a class="ui right floated my-margin-zero_three mini icon button"
                            th:href="@{/orders}">
                             <i class="reply icon"></i>
@@ -82,16 +61,6 @@
                 </tfoot>
             </table>
         </div>
-        <div class="ui success message my-padded-tb-zero" th:unless="${#strings.isEmpty(message)}">
-            <div class="ui two column grid">
-                <div class="column">
-                    <h4 th:text="${message}"></h4>
-                </div>
-                <div class="right aligned column">
-                    <i class="close icon"></i>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -99,17 +68,5 @@
 <footer th:replace="/_fragments :: footer"></footer>
 
 <th:block th:replace="/_fragments :: script"></th:block>
-
-<script>
-
-    $('.message .close').on('click', function () {
-        $(this).closest('.message').transition('fade');
-    });
-
-    setTimeout(function () {
-        $('.message .close').click();
-    }, 3000);
-
-</script>
 </body>
 </html>

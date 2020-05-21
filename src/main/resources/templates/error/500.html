@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>500</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments :: head(~{::title})">
+    <title>500 - o((>ω< ))o</title>
 </head>
 <body>
-<h1>500</h1>
+<nav th:replace="_fragments :: menu(0)"></nav>
+
+<div class="my-container my-padded-tb-large">
+    <div class="ui error message my-padded-tb-large">
+        <h1>500</h1>
+    </div>
+</div>
+
+<footer th:replace="_fragments :: footer"></footer>
 </body>
 </html>

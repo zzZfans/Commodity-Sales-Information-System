@@ -1,6 +1,5 @@
 package com.zfans.dao;
 
-import com.zfans.entity.Brand;
 import com.zfans.entity.Classification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

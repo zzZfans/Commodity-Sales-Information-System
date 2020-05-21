@@ -5,10 +5,10 @@ import com.zfans.entity.OrderDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 /**
  * @author Zfans
@@ -19,16 +19,13 @@ public class OrderDetailService {
     @Autowired
     OrderDetailRepository orderDetailRepository;
 
-    public OrderDetail getOrderDetailById(Long id) {
-        return orderDetailRepository.getOne(id);
-    }
-
-    public List<OrderDetail> listOrderDetail() {
-        return orderDetailRepository.findAll();
-    }
-
-    public Page<OrderDetail> listOrderDetail(Pageable pageable) {
-        return orderDetailRepository.findAll(pageable);
+    public Page<OrderDetail> listOrderDetail(Pageable pageable, Long id) {
+        return orderDetailRepository.findAll((Specification<OrderDetail>) (root, criteriaQuery, criteriaBuilder) -> {
+            if (id != null) {
+                criteriaQuery.where(criteriaBuilder.equal(root.get("orderMaster").get("id"), id));
+            }
+            return null;
+        }, pageable);
     }
 
     @Transactional(rollbackOn = Exception.class)

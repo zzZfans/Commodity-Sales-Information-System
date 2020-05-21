@@ -26,6 +26,6 @@ public class OrderDetail {
     @ManyToOne
     private OrderMaster orderMaster;
 
-    @OneToOne
+    @ManyToOne
     private Commodity commodity;
 }

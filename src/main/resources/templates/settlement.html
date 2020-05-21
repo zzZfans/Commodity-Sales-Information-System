@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/_fragments :: head(~{::title})">
+    <title>购物</title>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="/_fragments :: menu(2)"></nav>
+
+<!--中间内容-->
+<div class="my-container my-padded-tb-medium animated fadeIn">
+    <div class="ui container my-padded-lr-big">
+        <form class="ui form" method="post" th:action="@{/OrderMasters}" th:object="${OrderMaster}">
+            <input name="id" th:value="*{id}" type="hidden">
+            <div class="field">
+                <label style="color: #f1f1f1">客户姓名</label>
+                <div class="ui fluid search selection dropdown">
+                    <input name="customer.id"
+                           th:value="*{customer}==null?null:*{customer.id}" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">客户姓名...</div>
+                    <div class="menu">
+                        <div class="item" th:data-value="${customer.id}"
+                             th:each="customer : ${customers}"
+                             th:text="${customer.name}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label style="color: #f1f1f1">联系电话</label>
+                <input name="contactNumber" placeholder="联系电话..." th:value="*{contactNumber}" type="text">
+            </div>
+            <div class="field">
+                <label style="color: #f1f1f1">收货地址</label>
+                <input name="receivingAddress" placeholder="收货地址..." th:value="*{receivingAddress}" type="text">
+            </div>
+            <div class="field">
+                <label style="color: #f1f1f1">邮政编码</label>
+                <input name="postalCode" placeholder="邮政编码..." th:value="*{postalCode}" type="text">
+            </div>
+            <!--/*/
+            <div class="ui negative message" th:if="${#fields.hasErrors('id')}">
+                <i class="close icon" id="errorMessageCloseIcon"></i>
+                <div class="header">验证失败</div>
+                <p th:errors="*{id}">提交信息不符合规则</p>
+            </div>
+            /*/-->
+            <div class="ui right aligned container">
+                <button class="ui button" onclick="window.history.go(-1)" type="button">返回</button>
+                <button class="ui red button" id="submit-btn">付款</button>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+
+<!--底部footer-->
+<footer th:replace="/_fragments :: footer"></footer>
+
+<th:block th:replace="/_fragments :: script"></th:block>
+
+
+<script>
+    $("#errorMessageCloseIcon").click(function () {
+        $('.ui.negative.message').hide()
+    })
+
+    $('.menu.toggle').click(function () {
+        $('.my-item').toggleClass('my-mobile-hide');
+    });
+
+    $('.ui.form').form({
+        fields: {
+            customer: {
+                identifier: 'customer.id',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请选择客户！'
+                }]
+            },
+            contactNumber: {
+                identifier: 'contactNumber',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入联系电话！'
+                }]
+            },
+            receivingAddress: {
+                identifier: 'receivingAddress',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入收货地址！'
+                }]
+            }
+            ,
+            postalCode: {
+                identifier: 'postalCode',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入邮政编码！'
+                }]
+            }
+        }
+    });
+</script>
+</body>
+</html>

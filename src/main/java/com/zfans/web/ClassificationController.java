@@ -37,7 +37,7 @@ public class ClassificationController {
     }
 
     @PostMapping("/classifications")
-    public String post(@Valid Classification classification, BindingResult result, RedirectAttributes attributes,Model model) {
+    public String post(@Valid Classification classification, BindingResult result, RedirectAttributes attributes, Model model) {
         Classification t1 = new Classification();
         if (classification.getId() != null) {
             Classification t2 = new Classification();
@@ -65,7 +65,7 @@ public class ClassificationController {
             model.addAttribute("superClassifications", classificationService.listClassification());
             return "classification-input";
         }
-        if (classification.getSuperClassification().getId() == -1) {
+        if (classification.getSuperClassification().getId().equals(-1L)) {
             classification.setSuperClassification(null);
         }
         Classification c = classificationService.saveClassification(classification);

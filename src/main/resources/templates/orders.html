@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/_fragments :: head(~{::title})">
-    <title>分类</title>
+    <title>商品</title>
 </head>
 <body>
 <!--导航-->
-<nav th:replace="/_fragments :: menu(5)"></nav>
+<nav th:replace="/_fragments :: menu(2)"></nav>
 
 <!--中间内容-->
 <div class="my-container my-padded-tb-medium animated fadeIn">
@@ -14,52 +14,59 @@
             <input name="page" type="hidden">
             <div class="fields">
                 <div class="field">
-                    <input name="keyword" id="inputSearch" placeholder="输入关键字..." type="text">
+                    <input id="inputSearch" name="keyword" placeholder="输入关键字..." type="text">
                 </div>
                 <div class="field">
                     <div class="ui search selection dropdown">
-                        <input name="super" type="hidden">
+                        <input name="customer" type="hidden">
                         <i class="dropdown icon"></i>
-                        <div class="default text">选择父类...</div>
+                        <div class="default text">选择客户...</div>
                         <div class="menu">
-                            <div class="item" th:data-value="${superClassification.id}"
-                                 th:each="superClassification : ${superClassifications}"
-                                 th:text="${superClassification.name}"></div>
+                            <div class="item" th:data-value="${customer.id}"
+                                 th:each="customer : ${customers}"
+                                 th:text="${customer.name}"></div>
                         </div>
                     </div>
                 </div>
-                <button type="button" id="search-btn" class="ui icon button">
+                <button class="ui icon button" id="search-btn" type="button">
                     <i class="search icon"></i>
                 </button>
-                <button type="button" id="empty-btn" class="ui icon button">
+                <button class="ui icon button" id="empty-btn" type="button">
                     <i class="redo icon"></i>
                 </button>
             </div>
         </div>
         <div id="table-container">
-            <table class="ui compact celled table" th:fragment="classificationList">
+            <table class="ui compact celled table" th:fragment="orderList">
                 <thead>
                 <tr>
                     <th>序号</th>
-                    <th>分类</th>
-                    <th>图片</th>
-                    <th>父类</th>
+                    <th>订单编号</th>
+                    <th>客户</th>
+                    <th>联系电话</th>
+                    <th>收货地址</th>
+                    <th>邮编</th>
+                    <th>下单时间</th>
+                    <th>总金额</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="classification,iterStat:${page.content}">
+                <tr th:each="order,iterStat:${page.content}">
                     <td th:text="${iterStat.count}"></td>
-                    <td th:text="${classification.name}"></td>
-                    <td th:text="${classification.picture}"></td>
-                    <td th:text="${classification.superClassification}==null?无:${classification.superClassification.name}"></td>
+                    <td th:text="${order.orderNo}"></td>
+                    <td th:text="${order.customer.name}"></td>
+                    <td th:text="${order.contactNumber}"></td>
+                    <td th:text="${order.receivingAddress}"></td>
+                    <td th:text="${order.postalCode}"></td>
+                    <td th:text="${order.orderTime}"></td>
+                    <td th:text="${order.totalAmount}"></td>
                     <td>
-                        <a class="ui mini icon button"
-                           th:href="@{/classifications/{id}/edit(id=${classification.id})}">
-                            <i class="edit icon"></i>
+                        <a class="ui mini icon button" th:href="@{/orders/{id}/detail(id=${order.id})}">
+                            <i class="archive icon"></i>
                         </a>
-                        <a th:class="${classification.subClassificationList.isEmpty()&&classification.commodityList.isEmpty()}?'ui mini red icon button':'ui mini disabled red icon button'"
-                           th:href="@{/classifications/{id}/delete(id=${classification.id})}">
+                        <a class="ui mini red icon button"
+                           th:href="@{/orders/{id}/delete(id=${order.id})}">
                             <i class="trash alternate icon"></i>
                         </a>
                     </td>
@@ -68,19 +75,19 @@
                 <tfoot>
                 <tr>
                     <!--colspan 合并单元格-->
-                    <th colspan="5">
+                    <th colspan="10">
                         <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
-                            <a onclick="page(this)" class="item icon" th:attr="data-page=${page.number}-1"
+                            <a class="item icon" onclick="page(this)" th:attr="data-page=${page.number}-1"
                                th:unless="${page.first}">
                                 <i class="chevron left icon"></i>
                             </a>
-                            <a onclick="page(this)" class="item icon" th:attr="data-page=${page.number}+1"
+                            <a class="item icon" onclick="page(this)" th:attr="data-page=${page.number}+1"
                                th:unless="${page.last}">
                                 <i class="chevron right icon"></i>
                             </a>
                         </div>
                         <a class="ui right floated my-margin-zero_three mini icon button"
-                           href="#" th:href="@{/classifications/input}">
+                           href="#" th:href="@{/orderDetails}">
                             <i class="plus icon"></i>
                         </a>
                     </th>
@@ -135,14 +142,12 @@
     })
 
     function loaddata() {
-        $("#table-container").load(/*[[@{/classifications/search}]]*/"/classifications/search", {
+        $("#table-container").load(/*[[@{/orders/search}]]*/"/orders/search", {
             keyword: $("[name='keyword']").val(),
-            superId: $("[name='super']").val(),
+            customerId: $("[name='customer']").val(),
             page: $("[name='page']").val()
         });
     }
-
 </script>
-
 </body>
 </html>

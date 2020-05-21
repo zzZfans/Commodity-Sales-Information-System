@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>错误</title>
+<head th:replace="_fragments :: head(~{::title})">
+    <title>Error - o((>ω< ))o</title>
 </head>
 <body>
-<h1>错误</h1>
+<nav th:replace="_fragments :: menu(0)"></nav>
 
-<div>
-    <div th:remove="tag" th:utext="'&lt;!--'"></div>
-    <div th:remove="tag" th:utext="'Failed Request URL : ' + ${url}"></div>
-    <div th:remove="tag" th:utext="'Exception message : ' + ${exception.message}"></div>
-    <ul th:remove="tag">
-        <li th:each="st : ${exception.stackTrace}" th:remove="tag"><span th:remove="tag" th:utext="${st}"></span></li>
-    </ul>
-    <div th:remove="tag" th:utext="'--&gt;'"></div>
+<div class="my-container my-padded-tb-large">
+    <div class="ui error message my-padded-tb-large">
+        <h1>Error</h1>
+    </div>
 </div>
 
+<footer th:replace="_fragments :: footer"></footer>
 </body>
 </html>

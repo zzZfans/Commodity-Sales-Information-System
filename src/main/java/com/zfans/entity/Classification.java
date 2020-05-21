@@ -1,10 +1,7 @@
 package com.zfans.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.engine.internal.Cascade;
-import org.hibernate.sql.Delete;
 
 import javax.persistence.*;
 import java.util.ArrayList;

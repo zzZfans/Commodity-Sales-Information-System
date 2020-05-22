@@ -2,5 +2,26 @@ spring:
   thymeleaf:
     mode: HTML
     prefix: classpath:/templates/
-  profiles:
-    active: development
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    #指定数据库
+    url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=<数据库名>
+    #填写自己的账户密码
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      format_sql: true
+    show-sql: true
+
+logging:
+  level:
+    root: info
+    com.zfans: debug
+  file:
+    path: log/blog-dev.log
+
+server:
+  port: 8080

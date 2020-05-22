@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/_fragments :: head(~{::title})">
+<head th:replace="_fragments :: head(~{::title})">
     <title>新增分类</title>
 </head>
 <body>
 <!--导航-->
-<nav th:replace="/_fragments :: menu(5)"></nav>
+<nav th:replace="_fragments :: menu(5)"></nav>
 
 <!--中间内容-->
 <div class="my-container my-padded-tb-medium animated fadeIn">
@@ -51,9 +51,9 @@
 </div>
 
 <!--底部footer-->
-<footer th:replace="/_fragments :: footer"></footer>
+<footer th:replace="_fragments :: footer"></footer>
 
-<th:block th:replace="/_fragments :: script"></th:block>
+<th:block th:replace="_fragments :: script"></th:block>
 
 
 <script>

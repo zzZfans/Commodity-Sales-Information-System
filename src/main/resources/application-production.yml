@@ -1,12 +1,10 @@
 #################################### common config : ####################################
 spring:
-  thymeleaf:
-    mode: HTML
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=csis
-    username: sa
-    password: fanshen,666.
+    url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=<数据库名>
+    username: root
+    password: root
   jpa:
     hibernate:
       ddl-auto: none
@@ -20,5 +18,5 @@ logging:
     path: log/blog-pro.log
 
 server:
-  port: 8081
+  port: 8080
 

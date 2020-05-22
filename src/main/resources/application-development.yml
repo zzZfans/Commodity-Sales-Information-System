@@ -2,16 +2,15 @@
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=csis
-    username: sa
-    password: fanshen,666.
+    url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=<数据库名>
+    username: root
+    password: root
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       format_sql: true
     show-sql: true
-
 
 logging:
   level:

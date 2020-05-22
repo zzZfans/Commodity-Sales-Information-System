@@ -1,5 +1,5 @@
 ## 商品销售信息系统（增删改查CRUD）——demo（大二下学期课堂作业）
-### spring boot + spring data jpa + thymeleaf + lombok + maven + SQL server
+### 技术栈：spring boot + spring data jpa + thymeleaf + lombok + maven + SQL server
 ### 启动步骤：
 #### 一、克隆本项目到本地
 #### 二、用IDEA打开本项目

@@ -26,7 +26,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/customers")
-    public String customers(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String customers(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                     Pageable pageable, Model model) {
         model.addAttribute("page", customerService.listCustomer(pageable));
         return "customers";
@@ -106,7 +106,7 @@ public class CustomerController {
     }
 
     @PostMapping("/customers/search")
-    public String search(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String search(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                  Pageable pageable, Customer customer, Model model) {
         model.addAttribute("page", customerService.listCustomer(pageable, customer));
         return "customers :: customerList";

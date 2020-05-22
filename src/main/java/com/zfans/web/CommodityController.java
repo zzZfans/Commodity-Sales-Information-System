@@ -36,7 +36,7 @@ public class CommodityController {
     SupplierService supplierService;
 
     @GetMapping("/commodities")
-    public String commodities(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String commodities(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                       Pageable pageable, Model model) {
         model.addAttribute("idDetails", false);
         model.addAttribute("commodity", new Commodity());
@@ -49,7 +49,7 @@ public class CommodityController {
     }
 
     @GetMapping("/commodities/{id}")
-    public String commodities(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String commodities(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                       Pageable pageable, Model model, @PathVariable Long id) {
         model.addAttribute("idDetails", true);
         Commodity commodity = commodityService.getCommodityById(id);
@@ -171,7 +171,7 @@ public class CommodityController {
     }
 
     @PostMapping("/commodities/search")
-    public String search(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String search(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                  Pageable pageable, CommodityQuery commodityQuery, Model model) {
         model.addAttribute("page", commodityService.listCommodity(pageable, commodityQuery));
         return "commodities :: commodityList";

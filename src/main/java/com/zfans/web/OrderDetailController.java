@@ -14,7 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,7 +60,7 @@ public class OrderDetailController {
     }
 
     @GetMapping("/orders")
-    public String orders(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String orders(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                  Pageable pageable, Model model) {
         model.addAttribute("customers", customerService.listCustomer());
         model.addAttribute("page", orderMasterService.listOrderMaster(pageable));
@@ -122,7 +121,6 @@ public class OrderDetailController {
         return "redirect:/orderDetails";
     }
 
-    @Transactional(rollbackFor = Exception.class)
     @PostMapping("/OrderMasters")
     public String settlement(@Valid OrderMaster orderMaster, BindingResult result, RedirectAttributes attributes, Model model) {
         orderMaster.setOrderTime(new Date());
@@ -203,7 +201,7 @@ public class OrderDetailController {
     }
 
     @PostMapping("/orders/search")
-    public String orderSearch(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String orderSearch(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                       Pageable pageable, OrderQuery orderQuery, Model model) {
         model.addAttribute("page", orderMasterService.listOrderMaster(pageable, orderQuery));
         return "orders :: orderList";

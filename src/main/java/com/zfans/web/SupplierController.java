@@ -26,7 +26,7 @@ public class SupplierController {
     private SupplierService supplierService;
 
     @GetMapping("/suppliers")
-    public String suppliers(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String suppliers(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                     Pageable pageable, Model model) {
         model.addAttribute("page", supplierService.listSupplier(pageable));
         return "suppliers";
@@ -99,7 +99,7 @@ public class SupplierController {
     }
 
     @PostMapping("/suppliers/search")
-    public String search(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String search(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                  Pageable pageable, Supplier supplier, Model model) {
         model.addAttribute("page", supplierService.listSupplier(pageable, supplier));
         return "suppliers :: supplierList";

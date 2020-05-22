@@ -105,7 +105,7 @@ public class BrandController {
     }
 
     @PostMapping("/brands/search")
-    public String search(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String search(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                  Pageable pageable, Brand brand, Model model) {
         model.addAttribute("page", brandService.listBrand(pageable, brand));
         return "brands :: brandList";

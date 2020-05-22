@@ -113,7 +113,7 @@ public class ClassificationController {
     }
 
     @PostMapping("/classifications/search")
-    public String search(@PageableDefault(size = 3, sort = {"id"}, direction = Sort.Direction.ASC)
+    public String search(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.ASC)
                                  Pageable pageable, ClassificationQuery classificationQuery, Model model) {
         model.addAttribute("page", classificationService.listClassification(pageable, classificationQuery));
         return "classifications :: classificationList";

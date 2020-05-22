@@ -21,7 +21,7 @@ logging:
     root: info
     com.zfans: debug
   file:
-    path: log/blog-dev.log
+    path: log/csis-dev.log
 
 server:
   port: 8080

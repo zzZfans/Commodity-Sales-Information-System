@@ -14,7 +14,10 @@
 ```
 
 #### 四、启动项目
-#### 五、浏览器中输入 http://localhost:8080/ 访问
+
+#### 五、在数据库中执行 trigger.sql
+
+#### 六、浏览器中输入 http://localhost:8080/ 访问
 
 ![](https://t1.picb.cc/uploads/2020/05/24/koEQbJ.png)
 
